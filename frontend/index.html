@@ -1,0 +1,1172 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>M/S. Tulshi Enterprises | Electrical &amp; Civil Contractor in Odisha &amp; West Bengal</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            navy: '#120d2b',
+            midnight: '#18123a',
+            deep: '#0f0c29',
+            amber: '#f59e0b',
+            orange: '#f97316',
+            cyan: '#06b6d4'
+          }
+        },
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          display: ['"Cabinet Grotesk"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* =========================================================
+     DAY / NIGHT MODES  (body.mode-night  |  body.mode-day)
+     ========================================================= */
+  :root { --scene-h: clamp(150px, 17vw, 240px); }
+  body { transition: background-color .7s ease; }
+
+  /* ---- hero sky ---- */
+  #hero { background: #170f3e; padding-bottom: calc(var(--scene-h) + 56px) !important; }
+  #hero .sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  #hero .sky > * { position: absolute; transition: opacity 1.2s ease, transform 1.6s cubic-bezier(.22,.8,.25,1); }
+  .sky-night, .sky-day { inset: 0; }
+  .sky-night { background: radial-gradient(ellipse 70% 55% at 50% 100%, rgba(224,128,58,.30), rgba(224,128,58,0) 70%), linear-gradient(180deg, #170f3e 0%, #22175a 52%, #33257a 100%); }
+  .sky-day { opacity: 0; background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,214,150,.55), rgba(255,214,150,0) 70%), linear-gradient(180deg, #4fa6e6 0%, #8cc8f2 38%, #cfe8fa 72%, #fbefd9 100%); }
+  .stars { inset: 0 0 auto 0; width: 100%; height: 70%; }
+  .stars .tw { animation: twinkle 3.2s ease-in-out infinite alternate; }
+  @keyframes twinkle { from { opacity: .2; } to { opacity: 1; } }
+  .moon { top: 46px; left: 47%; width: 46px; height: 46px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff9ec, #f3dfb8 70%); box-shadow: 0 0 40px 10px rgba(255,236,200,.25); }
+  .moon::after { content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%; left: 24px; top: 12px; background: rgba(200,170,120,.35); box-shadow: -12px 14px 0 -3px rgba(200,170,120,.3); }
+  .sun { top: 30px; left: 46%; width: 92px; height: 92px; opacity: 0; transform: translateY(170px) scale(.85); }
+  .sun-core { position: absolute; inset: 16px; border-radius: 50%; background: radial-gradient(circle at 40% 38%, #fffef4 0%, #fff1b0 45%, #ffcf5a 100%); box-shadow: 0 0 50px 22px rgba(255,214,107,.55), 0 0 120px 60px rgba(255,236,170,.35); }
+  .sun-rays { position: absolute; inset: -26px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(255,226,140,.38) 0deg 7deg, transparent 7deg 22.5deg); -webkit-mask: radial-gradient(circle, transparent 38%, #000 40%, transparent 70%); mask: radial-gradient(circle, transparent 38%, #000 40%, transparent 70%); animation: spin 40s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cloud { opacity: 0; height: 34px; border-radius: 40px; background: #ffffff; filter: blur(2px); box-shadow: 30px -14px 0 4px #fff, 70px -4px 0 0 #fff; }
+  .cloud.c1 { top: 70px; left: 8%; width: 120px; animation: drift 70s linear infinite alternate; }
+  .cloud.c2 { top: 150px; left: 62%; width: 90px; transform: scale(.8); animation: drift 90s linear infinite alternate-reverse; }
+  .cloud.c3 { top: 40px; left: 78%; width: 70px; transform: scale(.6); animation: drift 110s linear infinite alternate; }
+  @keyframes drift { from { translate: -40px 0; } to { translate: 60px 0; } }
+  @media (max-width: 1023px) { .moon, .sun { left: auto; right: 34%; } }
+
+  body.mode-day .sky-day { opacity: 1; }
+  body.mode-day .sky-night, body.mode-day .stars, body.mode-day .moon { opacity: 0; }
+  body.mode-day .moon { transform: translateY(80px); }
+  body.mode-day .sun { opacity: 1; transform: none; }
+  body.mode-day .cloud { opacity: .92; }
+  body.mode-day #hero .hero-ambient-glow, body.mode-day #hero .absolute.inset-0 > div { opacity: .25; }
+
+  /* ---- street-lights skyline ---- */
+  #hero .sk { position: absolute; left: 0; right: 0; bottom: 0; height: var(--scene-h); z-index: 1; pointer-events: none; }
+  #hero .sk svg { display: block; width: 100%; height: 100%; }
+  #hero .sk svg * { transition: fill 1.2s ease, stroke 1.2s ease, opacity 1s ease; }
+  body.mode-night .sk .lamp { animation: lampOn 1s ease-out both; }
+  @keyframes lampOn { 0% { opacity: .05; } 40% { opacity: 1; } 55% { opacity: .45; } 70% { opacity: 1; } 82% { opacity: .7; } 100% { opacity: 1; } }
+  body.mode-day .sk .lamp { opacity: 0; }
+  body.mode-day .sk [fill="#F6B76B"] { opacity: 0; }
+  body.mode-day .sk [fill="#2A1E66"] { fill: #b6c4e0; }
+  body.mode-day .sk [fill="#1D1450"] { fill: #8c9cc5; }
+  body.mode-day .sk [stroke="#1D1450"] { stroke: #8293bf; }
+  body.mode-day .sk [fill="#0F0A2C"] { fill: #3e4766; }
+  body.mode-day .sk [stroke="#0F0A2C"] { stroke: #3e4766; }
+  body.mode-day .sk [fill="#1A1245"] { fill: #8a91a6; }
+  body.mode-day .sk [fill="#0D0826"] { fill: #5b6276; }
+  body.mode-day .sk [stroke="#B9AEEA"] { stroke: #4f5876; }
+
+  /* ---- hanging lamp ---- */
+  .pendant { position: absolute; top: 0; right: 9%; width: 320px; height: 640px; transform: translateX(50%); z-index: 40; pointer-events: none; }
+  .pendant svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .pd-grab { pointer-events: all; cursor: grab; touch-action: none; }
+  .pd-grab:active { cursor: grabbing; }
+  #pdHandle:focus { outline: none; }
+  #pdHandle:focus-visible .pd-handle-shape { stroke: #ffffff; stroke-width: 2; }
+  .pd-cone, .pd-halo { transition: opacity .5s ease; pointer-events: none; }
+  .pd-bulb { fill: url(#pd-bulb-on); transition: fill .4s ease; }
+  .pd-inner { fill: url(#pd-inner-on); }
+  .pd-fil { stroke: #fff7da; }
+  body.mode-day .pd-cone, body.mode-day .pd-halo { opacity: 0; }
+  body.mode-day .pd-bulb { fill: url(#pd-bulb-off); }
+  body.mode-day .pd-inner { fill: #2a2338; }
+  body.mode-day .pd-fil { stroke: #8a7a62; }
+  .pendant.pd-ignite .pd-cone, .pendant.pd-ignite .pd-halo { animation: lampOn .9s ease-out both; }
+  .pd-tag { animation: tagPulse 2.4s ease-in-out infinite; }
+  @keyframes tagPulse { 0%, 100% { opacity: .95; } 50% { opacity: .55; } }
+  .pendant.pd-used .pd-tag { animation: none; opacity: 0; transition: opacity .6s ease; }
+  @media (max-width: 1023px) { .pendant { right: 13%; width: 230px; height: 460px; } .pd-cone { opacity: .6; } }
+  @media (max-width: 640px) { .pendant { right: 11%; width: 160px; height: 320px; } #hero { padding-top: 128px !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    .stars .tw, .sun-rays, .cloud, .pd-tag, body.mode-night .sk .lamp, .pendant.pd-ignite .pd-cone, .pendant.pd-ignite .pd-halo { animation: none !important; }
+  }
+
+  /* ---- hero text in day mode ---- */
+  body.mode-day #hero { color: #13183a; }
+  body.mode-day #hero .hero-head { color: #13183a; }
+  body.mode-day #hero .hero-head span { background-image: linear-gradient(90deg, #c2410c, #ea580c, #b45309); }
+  body.mode-day #hero .hero-lead { color: #2f3b57 !important; }
+  body.mode-day #hero .hero-badge { background: rgba(255,255,255,.7); border-color: rgba(234,88,12,.4); color: #9a3412; }
+  body.mode-day #hero .hero-badge .bg-amber-400 { background: #ea580c; }
+  body.mode-day #hero .trust-bar { border-color: rgba(19,24,58,.15) !important; color: #2f3b57 !important; }
+  body.mode-day #hero .trust-bar .text-emerald-400 { color: #047857; }
+  body.mode-day #hero .trust-bar .text-cyan-300 { color: #0e7490; }
+  body.mode-day #hero .trust-bar .text-amber-300 { color: #b45309; }
+  body.mode-day #hero .trust-bar .text-white\/20 { color: rgba(19,24,58,.3); }
+  body.mode-day #hero .mode-btn { background: rgba(255,255,255,.72); color: #9a3412; border-color: rgba(234,88,12,.4); }
+  body.mode-day #hero .mode-btn #theme-btn-label { color: #13183a; }
+  .mode-ico { display: inline-flex; width: 16px; height: 16px; }
+  .mode-ico svg { width: 16px; height: 16px; }
+  .ico-sun { display: none; }
+  body.mode-night .ico-moon { display: none; }
+  body.mode-night .ico-sun { display: inline; }
+
+  /* ---- the rest of the page in night mode ---- */
+  body.mode-night { background-color: #0f0b26; color: #d6d3ea; }
+  header, header *, .nm, .nm * { transition-property: background-color, color, border-color; transition-duration: .6s; transition-timing-function: ease; }
+  body.mode-night header { background: rgba(16, 11, 40, .94) !important; border-color: rgba(255,255,255,.08) !important; }
+  body.mode-night header nav { color: #d9d6ee !important; }
+  body.mode-night header nav a:hover { color: #fb923c !important; }
+  body.mode-night header .bg-cyan-50 { background: rgba(6,182,212,.12) !important; color: #67e8f9 !important; border-color: rgba(103,232,249,.35) !important; }
+  .logo-plate { border-radius: 10px; transition: background-color .6s ease, padding .3s ease; }
+  body.mode-night .logo-plate { background: #ffffff; padding: 3px 10px; }
+
+  body.mode-night .nm.bg-white, body.mode-night .nm .bg-white { background-color: #1b1542 !important; }
+  body.mode-night .nm.bg-slate-50, body.mode-night .nm .bg-slate-50 { background-color: #120d2b !important; }
+  body.mode-night .nm .bg-slate-100 { background-color: #251d55 !important; }
+  body.mode-night .nm .text-slate-900 { color: #f3f2fb !important; }
+  body.mode-night .nm .text-slate-800 { color: #e6e4f4 !important; }
+  body.mode-night .nm .text-slate-700 { color: #d0cce6 !important; }
+  body.mode-night .nm .text-slate-600 { color: #b4afd1 !important; }
+  body.mode-night .nm .text-slate-500 { color: #9b96bb !important; }
+  body.mode-night .nm.border-slate-100, body.mode-night .nm .border-slate-100,
+  body.mode-night .nm.border-slate-200, body.mode-night .nm .border-slate-200,
+  body.mode-night .nm.border-slate-200\/80, body.mode-night .nm .border-slate-200\/80 { border-color: rgba(255,255,255,.1) !important; }
+  body.mode-night .nm .divide-slate-100 > * + * { border-color: rgba(255,255,255,.1) !important; }
+  body.mode-night .nm .shadow-slate-200\/80 { --tw-shadow-color: rgba(0,0,0,.45) !important; }
+  body.mode-night .nm .bg-orange-50 { background-color: rgba(249,115,22,.12) !important; }
+  body.mode-night .nm .bg-emerald-50 { background-color: rgba(16,185,129,.12) !important; }
+  body.mode-night .nm .bg-amber-100 { background-color: rgba(245,158,11,.16) !important; }
+  body.mode-night .nm .bg-cyan-100 { background-color: rgba(6,182,212,.16) !important; }
+  body.mode-night .nm .bg-emerald-100 { background-color: rgba(16,185,129,.16) !important; }
+  body.mode-night .nm .text-orange-700, body.mode-night .nm .text-orange-600 { color: #fdba74 !important; }
+  body.mode-night .nm .text-amber-700, body.mode-night .nm .text-amber-800, body.mode-night .nm .text-amber-600 { color: #fcd34d !important; }
+  body.mode-night .nm .text-cyan-700, body.mode-night .nm .text-cyan-800, body.mode-night .nm .text-cyan-600 { color: #67e8f9 !important; }
+  body.mode-night .nm .text-emerald-700, body.mode-night .nm .text-emerald-800, body.mode-night .nm .text-emerald-600 { color: #6ee7b7 !important; }
+  body.mode-night .nm .border-orange-200 { border-color: rgba(251,146,60,.35) !important; }
+  body.mode-night .nm .border-cyan-200 { border-color: rgba(103,232,249,.3) !important; }
+  body.mode-night .nm .border-amber-200 { border-color: rgba(252,211,77,.3) !important; }
+  body.mode-night .nm .border-emerald-200 { border-color: rgba(110,231,183,.3) !important; }
+  body.mode-night .nm input, body.mode-night .nm select, body.mode-night .nm textarea { background-color: #120d2b !important; color: #eeebf8 !important; border-color: rgba(255,255,255,.14) !important; }
+  body.mode-night .nm input::placeholder, body.mode-night .nm textarea::placeholder { color: #8a85ab; }
+</style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased mode-night">
+<script>try{if(localStorage.getItem('tulshi-mode')==='day'){document.body.classList.replace('mode-night','mode-day')}}catch(e){}</script>
+
+<!-- Top Contact & Social Bar -->
+<section class="bg-[#0f0c29] text-slate-300 text-xs py-2 px-4 sm:px-8 border-b border-white/10 hidden md:block">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-6">
+      <a href="tel:+917787808990" class="flex items-center space-x-2 text-slate-300 hover:text-amber-400 transition-colors">
+        <span class="p-1 rounded-full bg-amber-500/20 text-amber-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </span>
+        <span class="font-medium">+91 77878 08990</span>
+      </a>
+      <a href="mailto:tulshienterprises21@gmail.com" class="flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition-colors">
+        <span class="p-1 rounded-full bg-cyan-500/20 text-cyan-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </span>
+        <span class="font-normal">tulshienterprises21@gmail.com</span>
+      </a>
+    </div>
+    <div class="flex items-center space-x-3 text-slate-300">
+      <span class="text-xs text-slate-400 font-medium mr-1">Follow Us:</span>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-full bg-white/10 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 transition-colors" aria-label="LinkedIn">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+      </a>
+      <a href="https://wa.me/917787808990" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-full bg-white/10 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-400 transition-colors" aria-label="WhatsApp">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.741.964 1.2.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.102-.115.434-.505.549-.679.116-.173.232-.144.39-.086s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1 0.824z"></path></svg>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-full bg-white/10 hover:bg-amber-500/20 text-slate-300 hover:text-amber-400 transition-colors" aria-label="Facebook">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+      </a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-full bg-white/10 hover:bg-orange-500/20 text-slate-300 hover:text-orange-400 transition-colors" aria-label="Twitter">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Header with Official Brand Banner -->
+<header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#hero" class="flex items-center group py-2" aria-label="Tulshi Enterprises Homepage">
+        <div class="logo-plate h-12 w-auto overflow-hidden flex items-center">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KUBJ32wXbiHRE0z83sG4GC9p3PeAuMUl5h6EZ0uFGXba7f-hceoxt_sTyOw3FDfcsmQoeHdquo2CrRf2UyYYeVAR-USJDNxGbBMfOwxxONtGlPK3Z2iEkwCXKZNzNnDyEpkZ5oszhL9tLn4JYfRxOB6_2JpsiIQgBFODDR-NcBT8ZJtRqwEZhjYHnH6zrOLUTVGxqNCPLdVH8hI15goPZOB0Ib9kWVLQ3vpyWWmXFOiXoEDE4nRArTZNcLuIzCitng" alt="M/S. Tulshi Enterprises Electrical Contractor &amp; Civil Contractor" class="h-12 w-auto object-contain object-left max-w-[280px] sm:max-w-[340px]">
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wide text-slate-700">
+        <a href="#hero" class="text-orange-600 border-b-2 border-orange-500 pb-1 font-bold">Home</a>
+        <a href="#about" class="hover:text-orange-600 transition-colors">About Firm</a>
+        <a href="#services" class="hover:text-orange-600 transition-colors">Services</a>
+        <a href="#worksite-gallery" class="hover:text-orange-600 transition-colors">Field Execution</a>
+        <a href="gallery.html" class="hover:text-orange-600 transition-colors">Gallery</a>
+        <a href="#why-choose-us" class="hover:text-orange-600 transition-colors">Why Choose Us</a>
+        <a href="#contact" class="hover:text-orange-600 transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-3">
+        <a href="#contact" onclick="setEnquiryType('material')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full border border-cyan-500/40 text-cyan-700 bg-cyan-50 hover:bg-cyan-100 text-xs font-bold tracking-wider uppercase transition-all">
+          <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          Material &amp; Pole BOQ
+        </a>
+        <a href="#contact" onclick="setEnquiryType('tender')" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white text-xs sm:text-sm font-bold tracking-wider uppercase shadow-md transition-all">
+          Tender BOQ
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section with Interactive Lamp & Pull Switch -->
+  <section id="hero" class="relative text-white overflow-hidden pt-12 pb-28 md:pt-16 md:pb-36 transition-colors duration-700">
+    <!-- Day / night sky -->
+    <div class="sky" aria-hidden="true">
+      <div class="sky-night"></div>
+      <div class="sky-day"></div>
+      <svg class="stars" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMin slice" focusable="false"><g fill="#fff"><circle cx="518" cy="63" r="0.8" opacity="0.39"/><circle cx="585" cy="24" r="1" opacity="0.37"/><circle cx="112" cy="38" r="1.5" opacity="0.39"/><circle cx="1516" cy="265" r="0.8" opacity="0.70"/><circle cx="1562" cy="20" r="1" opacity="0.52" class="tw"/><circle cx="188" cy="130" r="1" opacity="0.41"/><circle cx="301" cy="41" r="0.8" opacity="0.69"/><circle cx="794" cy="223" r="1.2" opacity="0.63"/><circle cx="579" cy="104" r="1" opacity="0.77"/><circle cx="919" cy="221" r="1.2" opacity="0.79"/><circle cx="1568" cy="50" r="1.5" opacity="0.45"/><circle cx="1493" cy="177" r="0.8" opacity="0.81"/><circle cx="1401" cy="132" r="1.2" opacity="0.71"/><circle cx="730" cy="353" r="1.2" opacity="0.63"/><circle cx="97" cy="295" r="1.5" opacity="0.52"/><circle cx="1070" cy="9" r="1.5" opacity="0.56"/><circle cx="790" cy="92" r="1.2" opacity="0.43"/><circle cx="626" cy="366" r="0.8" opacity="0.45"/><circle cx="445" cy="58" r="1.5" opacity="0.87"/><circle cx="664" cy="151" r="1.5" opacity="0.92" class="tw"/><circle cx="282" cy="97" r="1" opacity="0.36"/><circle cx="292" cy="118" r="1" opacity="0.60"/><circle cx="906" cy="400" r="0.8" opacity="0.62"/><circle cx="1523" cy="286" r="1.5" opacity="0.59"/><circle cx="770" cy="168" r="1" opacity="0.39"/><circle cx="260" cy="143" r="0.8" opacity="0.41"/><circle cx="859" cy="399" r="0.8" opacity="0.39"/><circle cx="602" cy="266" r="1.2" opacity="0.71"/><circle cx="185" cy="205" r="1.5" opacity="0.64"/><circle cx="231" cy="315" r="1.2" opacity="0.64"/><circle cx="826" cy="86" r="1.2" opacity="0.44"/><circle cx="43" cy="222" r="0.8" opacity="0.77"/><circle cx="587" cy="70" r="1" opacity="0.67"/><circle cx="527" cy="94" r="1" opacity="0.83"/><circle cx="1184" cy="95" r="1.5" opacity="0.56" class="tw"/><circle cx="45" cy="117" r="1.2" opacity="0.47"/><circle cx="551" cy="340" r="1.2" opacity="0.92"/><circle cx="353" cy="95" r="1" opacity="0.55"/><circle cx="1576" cy="256" r="0.8" opacity="0.64"/><circle cx="1279" cy="36" r="0.8" opacity="0.90"/><circle cx="1200" cy="201" r="1" opacity="0.61"/><circle cx="139" cy="397" r="1.5" opacity="0.63"/><circle cx="136" cy="67" r="1" opacity="0.37"/><circle cx="745" cy="275" r="1.5" opacity="0.74"/><circle cx="878" cy="55" r="0.8" opacity="0.83"/><circle cx="164" cy="315" r="1" opacity="0.61"/><circle cx="1322" cy="89" r="1.2" opacity="0.48"/><circle cx="1222" cy="137" r="1.5" opacity="0.85" class="tw"/><circle cx="1184" cy="377" r="1.5" opacity="0.85"/><circle cx="209" cy="64" r="0.8" opacity="0.87"/><circle cx="974" cy="326" r="1" opacity="0.45"/><circle cx="1160" cy="234" r="1.2" opacity="0.76"/><circle cx="772" cy="326" r="0.8" opacity="0.50"/><circle cx="1236" cy="213" r="0.8" opacity="0.81"/><circle cx="709" cy="257" r="1" opacity="0.77"/><circle cx="853" cy="201" r="1" opacity="0.77"/><circle cx="1507" cy="109" r="1" opacity="0.85" class="tw"/><circle cx="195" cy="186" r="0.8" opacity="0.75"/><circle cx="340" cy="127" r="0.8" opacity="0.89" class="tw"/><circle cx="1146" cy="277" r="1" opacity="0.50" class="tw"/><circle cx="748" cy="314" r="0.8" opacity="0.59"/><circle cx="1584" cy="350" r="1" opacity="0.77"/><circle cx="646" cy="177" r="1.2" opacity="0.54"/><circle cx="31" cy="233" r="1.5" opacity="0.77"/><circle cx="828" cy="124" r="0.8" opacity="0.42"/><circle cx="366" cy="368" r="0.8" opacity="0.51" class="tw"/><circle cx="1246" cy="114" r="1" opacity="0.84"/><circle cx="1082" cy="397" r="1.5" opacity="0.44"/><circle cx="913" cy="294" r="0.8" opacity="0.52"/><circle cx="293" cy="376" r="1.2" opacity="0.91"/><circle cx="1283" cy="35" r="1" opacity="0.39"/><circle cx="726" cy="142" r="1.5" opacity="0.91"/><circle cx="207" cy="221" r="1" opacity="0.91"/><circle cx="419" cy="76" r="1.2" opacity="0.73"/><circle cx="329" cy="187" r="1" opacity="0.51"/><circle cx="1591" cy="16" r="0.8" opacity="0.79"/><circle cx="303" cy="199" r="1.5" opacity="0.41"/><circle cx="691" cy="208" r="1.5" opacity="0.93"/><circle cx="344" cy="96" r="1" opacity="0.85"/><circle cx="1018" cy="170" r="1.2" opacity="0.94"/><circle cx="23" cy="263" r="1.2" opacity="0.61" class="tw"/><circle cx="1064" cy="160" r="1.2" opacity="0.71"/><circle cx="72" cy="78" r="1.2" opacity="0.62"/><circle cx="1539" cy="409" r="1.2" opacity="0.50"/><circle cx="495" cy="150" r="0.8" opacity="0.55" class="tw"/><circle cx="446" cy="276" r="1" opacity="0.65" class="tw"/><circle cx="423" cy="38" r="1.5" opacity="0.70"/><circle cx="479" cy="264" r="0.8" opacity="0.70"/><circle cx="1201" cy="276" r="1.5" opacity="0.81"/><circle cx="791" cy="119" r="1" opacity="0.38"/><circle cx="1427" cy="263" r="1" opacity="0.90"/><circle cx="910" cy="341" r="0.8" opacity="0.85"/><circle cx="1429" cy="287" r="1" opacity="0.40" class="tw"/><circle cx="1019" cy="403" r="1.5" opacity="0.85"/><circle cx="1004" cy="263" r="1" opacity="0.64" class="tw"/><circle cx="1276" cy="314" r="0.8" opacity="0.75" class="tw"/><circle cx="1179" cy="106" r="0.8" opacity="0.86"/><circle cx="1210" cy="97" r="1.5" opacity="0.65"/><circle cx="766" cy="287" r="0.8" opacity="0.72"/><circle cx="124" cy="62" r="1.2" opacity="0.74"/><circle cx="994" cy="56" r="1.5" opacity="0.39"/><circle cx="1075" cy="291" r="1.5" opacity="0.52"/><circle cx="743" cy="196" r="0.8" opacity="0.95"/><circle cx="499" cy="36" r="1.5" opacity="0.36"/><circle cx="1312" cy="407" r="1.5" opacity="0.95"/><circle cx="1466" cy="391" r="0.8" opacity="0.70" class="tw"/><circle cx="839" cy="400" r="1" opacity="0.71"/><circle cx="447" cy="47" r="1.2" opacity="0.49"/><circle cx="778" cy="10" r="0.8" opacity="0.92"/><circle cx="649" cy="305" r="1.5" opacity="0.56"/><circle cx="1344" cy="1" r="1.2" opacity="0.85" class="tw"/><circle cx="1482" cy="299" r="1.2" opacity="0.50" class="tw"/><circle cx="624" cy="365" r="0.8" opacity="0.57"/><circle cx="440" cy="20" r="0.8" opacity="0.38"/><circle cx="1016" cy="63" r="1.2" opacity="0.61"/><circle cx="1237" cy="330" r="1.5" opacity="0.88"/><circle cx="1009" cy="384" r="1" opacity="0.78" class="tw"/><circle cx="1172" cy="189" r="1" opacity="0.74"/><circle cx="78" cy="389" r="1" opacity="0.45"/><circle cx="451" cy="107" r="1.2" opacity="0.59"/><circle cx="773" cy="281" r="0.8" opacity="0.45" class="tw"/><circle cx="333" cy="381" r="1.5" opacity="0.68"/><circle cx="533" cy="319" r="1.5" opacity="0.43"/><circle cx="145" cy="144" r="0.8" opacity="0.54"/><circle cx="1295" cy="85" r="0.8" opacity="0.80"/><circle cx="662" cy="220" r="1.5" opacity="0.51"/><circle cx="797" cy="241" r="1.2" opacity="0.43"/><circle cx="1007" cy="362" r="1" opacity="0.41"/><circle cx="615" cy="271" r="1.5" opacity="0.92"/><circle cx="1397" cy="9" r="0.8" opacity="0.61"/><circle cx="1287" cy="407" r="1.5" opacity="0.35"/><circle cx="1483" cy="347" r="1.5" opacity="0.93"/><circle cx="174" cy="65" r="0.8" opacity="0.91"/><circle cx="1036" cy="321" r="1.5" opacity="0.40"/><circle cx="2" cy="53" r="0.8" opacity="0.74"/><circle cx="205" cy="106" r="1.5" opacity="0.77" class="tw"/><circle cx="113" cy="220" r="1" opacity="0.58"/><circle cx="962" cy="4" r="1.2" opacity="0.95"/><circle cx="506" cy="353" r="1" opacity="0.64"/><circle cx="395" cy="403" r="1.2" opacity="0.38"/></g></svg>
+      <div class="moon"></div>
+      <div class="sun"><div class="sun-rays"></div><div class="sun-core"></div></div>
+      <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    </div>
+    <!-- Ambient Radial Lighting Blurs -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="hero-ambient-glow absolute -top-24 left-1/4 w-[650px] h-[450px] bg-gradient-to-br from-amber-500/20 via-orange-600/15 to-transparent blur-[120px] rounded-full transition-all duration-700"></div>
+      <div class="absolute top-1/3 -right-20 w-[550px] h-[450px] bg-gradient-to-bl from-cyan-500/15 via-indigo-600/20 to-transparent blur-[130px] rounded-full"></div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- HANGING LAMP: swings on its cord; pull the chain (or click the lamp) to switch day / night -->
+    <!-- ========================================== -->
+    <div id="pendant" class="pendant">
+      <svg id="pdSvg" viewBox="0 0 320 640" focusable="false">
+        <defs>
+          <linearGradient id="pd-shade" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#0c0a14"/><stop offset="0.28" stop-color="#2b2540"/>
+            <stop offset="0.45" stop-color="#4a4166"/><stop offset="0.62" stop-color="#231d36"/><stop offset="1" stop-color="#09070f"/>
+          </linearGradient>
+          <linearGradient id="pd-brass" x1="0" x2="1">
+            <stop offset="0" stop-color="#5c3809"/><stop offset="0.45" stop-color="#e2a83a"/>
+            <stop offset="0.6" stop-color="#fff0c2"/><stop offset="0.85" stop-color="#93590f"/><stop offset="1" stop-color="#3f2304"/>
+          </linearGradient>
+          <radialGradient id="pd-inner-on" cx="0.5" cy="0.2" r="0.8">
+            <stop offset="0" stop-color="#fff6d8"/><stop offset="0.5" stop-color="#ffc66b"/><stop offset="1" stop-color="#c46a14"/>
+          </radialGradient>
+          <radialGradient id="pd-bulb-on" cx="0.4" cy="0.35" r="0.7">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="0.4" stop-color="#fff3c4"/><stop offset="1" stop-color="#ffb347"/>
+          </radialGradient>
+          <radialGradient id="pd-bulb-off" cx="0.35" cy="0.3" r="0.75">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="0.5" stop-color="#e6e9f0" stop-opacity="0.75"/><stop offset="1" stop-color="#a7adbd" stop-opacity="0.8"/>
+          </radialGradient>
+          <radialGradient id="pd-halo" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#ffe2a3" stop-opacity="0.85"/><stop offset="0.35" stop-color="#ffb25e" stop-opacity="0.35"/><stop offset="1" stop-color="#ffb25e" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="pd-cone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffe7b0" stop-opacity="0.55"/><stop offset="0.45" stop-color="#ffb25e" stop-opacity="0.18"/><stop offset="1" stop-color="#ffb25e" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="pd-bead" cx="0.35" cy="0.35" r="0.7">
+            <stop offset="0" stop-color="#fff3c8"/><stop offset="0.55" stop-color="#e09a2a"/><stop offset="1" stop-color="#6b3a07"/>
+          </radialGradient>
+          <filter id="pd-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+
+        <!-- ceiling rose -->
+        <rect x="138" y="-6" width="44" height="13" rx="5" fill="url(#pd-shade)"/>
+        <rect x="146" y="5" width="28" height="3" rx="1.5" fill="url(#pd-brass)"/>
+
+        <!-- cord -->
+        <path id="pdCord" fill="none" stroke="#120f1b" stroke-width="2.8" stroke-linecap="round"/>
+        <path id="pdCordHi" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="0.9" stroke-linecap="round"/>
+
+        <g id="pdLamp">
+          <polygon class="pd-cone" points="-44,70 44,70 250,640 -250,640" fill="url(#pd-cone)"/>
+          <circle class="pd-halo" cx="0" cy="72" r="58" fill="url(#pd-halo)"/>
+          <g id="pdBody" class="pd-grab">
+            <rect x="-6" y="0" width="12" height="9" rx="2" fill="url(#pd-brass)"/>
+            <rect x="-10" y="8" width="20" height="10" rx="2.5" fill="url(#pd-shade)"/>
+            <rect x="-12" y="16" width="24" height="3" rx="1.5" fill="url(#pd-brass)"/>
+            <path d="M-11 18 C-11 27,-22 31,-36 39 C-52 48,-60 57,-63 66 L63 66 C60 57,52 48,36 39 C22 31,11 27,11 18 Z" fill="url(#pd-shade)"/>
+            <path d="M-8 22 C-13 31,-33 39,-50 52" fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round"/>
+            <text x="0" y="56" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="6.5" font-weight="700" letter-spacing="1.6" fill="#e2b25a" fill-opacity="0.85">TULSHI · 220V</text>
+            <ellipse class="pd-inner" cx="0" cy="67" rx="60" ry="5.5"/>
+            <rect x="-64" y="64" width="128" height="5" rx="2.5" fill="url(#pd-brass)"/>
+            <circle class="pd-bulb" cx="0" cy="74" r="11.5"/>
+            <path class="pd-fil" d="M-4 70 L-2 76 L0 71 L2 76 L4 70" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M-5 66 L-4 70 M5 66 L4 70" stroke="#6b4a1a" stroke-width="1"/>
+            <ellipse cx="-4" cy="70" rx="2.6" ry="4.5" fill="#ffffff" fill-opacity="0.55" transform="rotate(-25 -4 70)"/>
+          </g>
+        </g>
+
+        <!-- pull chain -->
+        <g id="pdBeads"></g>
+        <g id="pdHandle" class="pd-grab" tabindex="0" role="button" aria-label="Pull the chain to switch between day and night">
+          <rect x="-2" y="-3" width="4" height="6" rx="1.5" fill="url(#pd-brass)"/>
+          <path class="pd-handle-shape" d="M0 2 C6 2,8 9,8 14 C8 21,4 26,0 26 C-4 26,-8 21,-8 14 C-8 9,-6 2,0 2 Z" fill="url(#pd-bead)"/>
+          <path d="M-2.5 7 L-2.5 19 M2.5 7 L2.5 19" stroke="#ffffff" stroke-opacity="0.45" stroke-width="1"/>
+          <g class="pd-tag"><rect x="-17" y="31" width="34" height="13" rx="6.5" fill="#f59e0b"/><text x="0" y="40.5" text-anchor="middle" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="7.5" font-weight="800" letter-spacing="1" fill="#1c1408">PULL</text></g>
+        </g>
+      </svg>
+    </div>
+    <!-- ========================================== -->
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 text-left space-y-6">
+          <div class="hero-badge inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-semibold tracking-wider uppercase">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span class="">Electrical &amp; Civil Contractor • Odisha &amp; West Bengal</span>
+          </div>
+
+          <h1 class="hero-head text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight uppercase leading-[1.1]">
+            Trusted <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-300">Electrical &amp; Civil</span> Contractors in Odisha &amp; WB
+          </h1>
+
+          <p class="hero-lead text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-xl">
+            Complete electrical grid and civil works under one roof — high-mast street lighting, HT/LT lines, transformer substations, and heavy RCC construction across government &amp; industrial sites.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#contact" onclick="setEnquiryType('tender')" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg inline-flex items-center gap-2">
+              <span class="">Contracting Tender BOQ</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </a>
+            <a href="#contact" onclick="setEnquiryType('material')" class="px-6 py-3.5 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg inline-flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span class="">Material &amp; Pole BOQ</span>
+            </a>
+            <button onclick="pullSwitchAction()" class="mode-btn px-4 py-3 rounded-full bg-white/10 hover:bg-white/20 text-amber-300 font-semibold text-xs tracking-wider border border-amber-400/40 transition-all inline-flex items-center gap-1.5 shadow-sm">
+              <span class="mode-ico" aria-hidden="true"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+              <span id="theme-btn-label" class="font-bold text-white uppercase">Switch to Day</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="trust-bar pt-4 flex flex-wrap items-center gap-4 text-xs text-slate-300 border-t border-white/10">
+            <span class="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path></svg>
+              100% Statutory Compliance
+            </span>
+            <span class="text-white/20">•</span>
+            <span class="inline-flex items-center gap-1.5 text-cyan-300 font-medium">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Verified Field Telemetry
+            </span>
+            <span class="text-white/20">•</span>
+            <span class="inline-flex items-center gap-1.5 text-amber-300 font-medium">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              HT/LT &amp; High Mast Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Showcase Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none rounded-3xl p-2 bg-gradient-to-br from-amber-500/30 via-cyan-500/20 to-orange-500/40 shadow-2xl">
+            <div class="bg-[#19143d] rounded-2xl overflow-hidden border border-white/15 p-4 space-y-4">
+              <!-- Real Worksite Image with Live Telemetry Overlay -->
+              <div class="relative h-64 sm:h-72 rounded-xl overflow-hidden group">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWuVcFjy6ZNR1AKYxQ64Igc-Hm8DxCUItb-7wbyjpyb7fHdaK4SZSgfhEYM-mGHJCt9YLh3qH-w4GziRX3Z2C_FZ_YykrfgZDnj7RjXI_BiuKWUTiI-gpLnRjL3l6rz4VkTKHF4k_Fnvb_iwoFAf1AhJ96_bIl0y7g4CtmBntBZ9SDXtpa3OAIhmt6lqumL6bQ49nIhf1XvUde8afjYCiPKPvR--s9NRtUM5vl3OrW8ormRGNkbtTdqjO2W6QfodN4Dw" alt="Brajrajnagar foundation casting and high mast pole conduit works" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white shadow-md">
+                    Active Ground Site
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-black/60 text-emerald-400 backdrop-blur-md border border-emerald-400/40 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    GPS Tagged
+                  </span>
+                </div>
+                <div class="absolute bottom-3 left-3 right-3 text-left">
+                  <div class="text-xs font-bold text-amber-300 uppercase tracking-wider">Odisha Municipal Project</div>
+                  <div class="text-sm font-semibold text-white drop-shadow">Anchor Bolt Assembly &amp; Conduit Casting</div>
+                  <div class="text-[11px] text-slate-300 font-mono mt-0.5">Brajrajnagar, Jharsuguda Dist. • Lat 21.8476° N</div>
+                </div>
+              </div>
+              <!-- Mini Real Image Preview Row -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="rounded-lg overflow-hidden border border-white/10 h-16 relative group cursor-pointer" onclick="pullSwitchAction()">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYZkhFEV0iaTuBcQIn3nwg-GXw2ZOjcb9goNppeWgOze7wUKOox4kjqEIE2oqyjtB7MrgBsCehy_VZHyHw2oJlAebeph7dRSRWQw2k6jO9-KCShTiNhtwK3wl7Gw0bqwNgJ0W-TH8VHGqMma7G9xCt3X595gqTPxpcW36RQb6kqR07LO_S3CbExsB5jM3d8lhfXzcA4i3l_R8su15BXwyatGwW8pDTEP78Ria6drIpyaNhUjxKBPwwIq6-oGhxvAAhVw" alt="Night street lighting illumination trial" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  <span class="absolute bottom-0 inset-x-0 bg-black/70 text-[9px] text-center text-amber-300 py-0.5 font-medium">Night Trial</span>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-white/10 h-16 relative group cursor-pointer" onclick="pullSwitchAction()">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMD7cSZMoBYvj02ZUBLU_oEc-rsWjhQh604WmoF50IqSBkAQ9SqMZeGaT0MewZlxvk2yqP5BNSEJA_Vi9oU7pN90EyZiKMjQlRplwf62VkyqmH-CvZP_eY04PxRBuXO72sE98bxPvLEssH9OCfMc6Ac1FDWsE_F8hlPMCPZBc5t5QC4SCUzpRFhgPrv8KgWfD-4SHhLhxi9EzdH9NT8XZ41lNnEtCmwY6at222dSp2oS1H-xiVfsbYAwCYj_8sXN2Xrw" alt="9m octagonal pole staging" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  <span class="absolute bottom-0 inset-x-0 bg-black/70 text-[9px] text-center text-cyan-300 py-0.5 font-medium">Pole Staging</span>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-white/10 h-16 relative group cursor-pointer" onclick="pullSwitchAction()">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBNoAiJhjVLtvLhLw7uqNKXP6OZ-5cOTTr0z9wTX5kninlAvSF2ayUyydYiFCxcGP659ZTYdu8o4tOBdUfPwSIkXHWws9B84rItkBEsl1ywu4s9D4p_GV91wh3AxExVfNvAo7Stu_fFWoqDTNmhBw0DDjMYQVQDsuEN6ybc3RI3iJp9rsq5x4UVTEflIY6SrRkOERU2-otSyLBoEKt0eVdbWFnacQa308iDv6fKw0n89GqSNKwLt_zoHb_iwTLoVbeOA" alt="Trench excavation work" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                  <span class="absolute bottom-0 inset-x-0 bg-black/70 text-[9px] text-center text-orange-300 py-0.5 font-medium">Trenching</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Street-lights skyline at the bottom of the hero (lights switch off in day mode) -->
+    <div class="sk" aria-hidden="true"><svg viewBox="0 0 2400 300" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><radialGradient id="g-glow"><stop offset="0" stop-color="#FFD08F" stop-opacity="0.7"/><stop offset="0.45" stop-color="#FFB25E" stop-opacity="0.22"/><stop offset="1" stop-color="#FFB25E" stop-opacity="0"/></radialGradient><linearGradient id="g-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC27C" stop-opacity="0.32"/><stop offset="1" stop-color="#FFC27C" stop-opacity="0.05"/></linearGradient><linearGradient id="g-wirefade" gradientUnits="userSpaceOnUse" x1="1150" y1="0" x2="1290" y2="0"><stop offset="0" stop-color="#B9AEEA" stop-opacity="0"/><stop offset="1" stop-color="#B9AEEA" stop-opacity="0.38"/></linearGradient></defs><g fill="#2A1E66"><rect x="-10" y="169" width="48" height="113"/><rect x="33" y="119" width="45" height="163"/><rect x="81" y="151" width="58" height="131"/><rect x="138" y="204" width="79" height="78"/><rect x="218" y="190" width="41" height="92"/><rect x="228" y="176" width="20" height="15"/><rect x="257" y="181" width="75" height="101"/><rect x="335" y="190" width="64" height="92"/><rect x="405" y="205" width="46" height="77"/><rect x="416" y="191" width="23" height="15"/><rect x="448" y="127" width="83" height="155"/><rect x="535" y="145" width="84" height="137"/><rect x="622" y="121" width="67" height="161"/><rect x="639" y="107" width="34" height="15"/><rect x="689" y="163" width="51" height="119"/><rect x="734" y="200" width="60" height="82"/><rect x="797" y="219" width="86" height="63"/><rect x="888" y="195" width="44" height="87"/><rect x="926" y="117" width="88" height="165"/><rect x="1008" y="202" width="77" height="80"/><rect x="1089" y="139" width="69" height="143"/><rect x="1122" y="117" width="2" height="23"/><rect x="1156" y="208" width="41" height="74"/><rect x="1175" y="186" width="2" height="23"/><rect x="1201" y="195" width="68" height="87"/><rect x="1273" y="186" width="47" height="96"/><rect x="1324" y="212" width="85" height="70"/><rect x="1415" y="216" width="68" height="66"/><rect x="1432" y="202" width="34" height="15"/><rect x="1480" y="202" width="78" height="80"/><rect x="1559" y="131" width="67" height="151"/><rect x="1622" y="144" width="84" height="138"/><rect x="1707" y="146" width="65" height="136"/><rect x="1775" y="130" width="71" height="152"/><rect x="1843" y="128" width="87" height="154"/><rect x="1933" y="188" width="92" height="94"/><rect x="2029" y="186" width="60" height="96"/><rect x="2087" y="173" width="61" height="109"/><rect x="2151" y="114" width="49" height="168"/><rect x="2194" y="188" width="88" height="94"/><rect x="2237" y="166" width="2" height="23"/><rect x="2279" y="144" width="84" height="138"/><rect x="2369" y="178" width="72" height="104"/></g><g fill="#F6B76B" opacity="0.55"><rect x="8" y="207" width="4" height="6" fill-opacity="0.54"/><rect x="-3" y="221" width="4" height="6" fill-opacity="0.75"/><rect x="-3" y="235" width="4" height="6" fill-opacity="0.85"/><rect x="8" y="249" width="4" height="6" fill-opacity="0.51"/><rect x="-3" y="263" width="4" height="6" fill-opacity="0.83"/><rect x="51" y="143" width="4" height="6" fill-opacity="0.78"/><rect x="62" y="185" width="4" height="6" fill-opacity="0.59"/><rect x="51" y="241" width="4" height="6" fill-opacity="0.40"/><rect x="88" y="203" width="4" height="6" fill-opacity="0.61"/><rect x="110" y="217" width="4" height="6" fill-opacity="0.52"/><rect x="121" y="245" width="4" height="6" fill-opacity="0.49"/><rect x="110" y="259" width="4" height="6" fill-opacity="0.47"/><rect x="247" y="242" width="4" height="6" fill-opacity="0.64"/><rect x="225" y="256" width="4" height="6" fill-opacity="0.71"/><rect x="247" y="256" width="4" height="6" fill-opacity="0.71"/><rect x="412" y="229" width="4" height="6" fill-opacity="0.41"/><rect x="499" y="137" width="4" height="6" fill-opacity="0.58"/><rect x="510" y="137" width="4" height="6" fill-opacity="0.73"/><rect x="510" y="151" width="4" height="6" fill-opacity="0.54"/><rect x="455" y="179" width="4" height="6" fill-opacity="0.65"/><rect x="477" y="193" width="4" height="6" fill-opacity="0.76"/><rect x="466" y="207" width="4" height="6" fill-opacity="0.39"/><rect x="477" y="207" width="4" height="6" fill-opacity="0.76"/><rect x="455" y="221" width="4" height="6" fill-opacity="0.67"/><rect x="455" y="235" width="4" height="6" fill-opacity="0.57"/><rect x="510" y="249" width="4" height="6" fill-opacity="0.59"/><rect x="542" y="169" width="4" height="6" fill-opacity="0.51"/><rect x="597" y="169" width="4" height="6" fill-opacity="0.50"/><rect x="564" y="183" width="4" height="6" fill-opacity="0.83"/><rect x="553" y="239" width="4" height="6" fill-opacity="0.76"/><rect x="586" y="239" width="4" height="6" fill-opacity="0.60"/><rect x="597" y="239" width="4" height="6" fill-opacity="0.65"/><rect x="553" y="253" width="4" height="6" fill-opacity="0.62"/><rect x="564" y="253" width="4" height="6" fill-opacity="0.50"/><rect x="608" y="253" width="4" height="6" fill-opacity="0.75"/><rect x="564" y="267" width="4" height="6" fill-opacity="0.44"/><rect x="629" y="131" width="4" height="6" fill-opacity="0.80"/><rect x="673" y="131" width="4" height="6" fill-opacity="0.76"/><rect x="629" y="173" width="4" height="6" fill-opacity="0.38"/><rect x="629" y="187" width="4" height="6" fill-opacity="0.37"/><rect x="629" y="201" width="4" height="6" fill-opacity="0.82"/><rect x="640" y="215" width="4" height="6" fill-opacity="0.76"/><rect x="662" y="215" width="4" height="6" fill-opacity="0.53"/><rect x="752" y="252" width="4" height="6" fill-opacity="0.55"/><rect x="763" y="266" width="4" height="6" fill-opacity="0.36"/><rect x="917" y="205" width="4" height="6" fill-opacity="0.47"/><rect x="944" y="127" width="4" height="6" fill-opacity="0.46"/><rect x="977" y="127" width="4" height="6" fill-opacity="0.74"/><rect x="933" y="155" width="4" height="6" fill-opacity="0.81"/><rect x="944" y="155" width="4" height="6" fill-opacity="0.52"/><rect x="999" y="155" width="4" height="6" fill-opacity="0.48"/><rect x="933" y="169" width="4" height="6" fill-opacity="0.68"/><rect x="966" y="169" width="4" height="6" fill-opacity="0.80"/><rect x="955" y="183" width="4" height="6" fill-opacity="0.73"/><rect x="977" y="183" width="4" height="6" fill-opacity="0.66"/><rect x="933" y="197" width="4" height="6" fill-opacity="0.74"/><rect x="955" y="197" width="4" height="6" fill-opacity="0.80"/><rect x="988" y="197" width="4" height="6" fill-opacity="0.77"/><rect x="955" y="211" width="4" height="6" fill-opacity="0.73"/><rect x="988" y="225" width="4" height="6" fill-opacity="0.83"/><rect x="944" y="267" width="4" height="6" fill-opacity="0.49"/><rect x="1015" y="212" width="4" height="6" fill-opacity="0.62"/><rect x="1026" y="212" width="4" height="6" fill-opacity="0.55"/><rect x="1015" y="226" width="4" height="6" fill-opacity="0.47"/><rect x="1037" y="226" width="4" height="6" fill-opacity="0.45"/><rect x="1026" y="240" width="4" height="6" fill-opacity="0.50"/><rect x="1015" y="254" width="4" height="6" fill-opacity="0.60"/><rect x="1015" y="268" width="4" height="6" fill-opacity="0.83"/><rect x="1185" y="232" width="4" height="6" fill-opacity="0.68"/><rect x="1241" y="219" width="4" height="6" fill-opacity="0.46"/><rect x="1375" y="264" width="4" height="6" fill-opacity="0.54"/><rect x="1386" y="264" width="4" height="6" fill-opacity="0.35"/><rect x="1397" y="264" width="4" height="6" fill-opacity="0.58"/><rect x="1466" y="240" width="4" height="6" fill-opacity="0.55"/><rect x="1498" y="212" width="4" height="6" fill-opacity="0.52"/><rect x="1542" y="212" width="4" height="6" fill-opacity="0.75"/><rect x="1509" y="240" width="4" height="6" fill-opacity="0.81"/><rect x="1542" y="268" width="4" height="6" fill-opacity="0.83"/><rect x="1651" y="168" width="4" height="6" fill-opacity="0.73"/><rect x="1695" y="168" width="4" height="6" fill-opacity="0.79"/><rect x="1662" y="182" width="4" height="6" fill-opacity="0.55"/><rect x="1758" y="156" width="4" height="6" fill-opacity="0.50"/><rect x="1725" y="212" width="4" height="6" fill-opacity="0.50"/><rect x="1736" y="240" width="4" height="6" fill-opacity="0.53"/><rect x="1725" y="254" width="4" height="6" fill-opacity="0.69"/><rect x="1782" y="140" width="4" height="6" fill-opacity="0.38"/><rect x="1804" y="182" width="4" height="6" fill-opacity="0.68"/><rect x="1782" y="196" width="4" height="6" fill-opacity="0.84"/><rect x="1793" y="196" width="4" height="6" fill-opacity="0.83"/><rect x="1826" y="210" width="4" height="6" fill-opacity="0.73"/><rect x="1826" y="224" width="4" height="6" fill-opacity="0.77"/><rect x="1793" y="252" width="4" height="6" fill-opacity="0.47"/><rect x="1883" y="152" width="4" height="6" fill-opacity="0.49"/><rect x="1850" y="180" width="4" height="6" fill-opacity="0.62"/><rect x="1861" y="222" width="4" height="6" fill-opacity="0.65"/><rect x="1850" y="236" width="4" height="6" fill-opacity="0.64"/><rect x="1916" y="250" width="4" height="6" fill-opacity="0.62"/><rect x="1850" y="264" width="4" height="6" fill-opacity="0.83"/><rect x="1973" y="198" width="4" height="6" fill-opacity="0.83"/><rect x="1984" y="212" width="4" height="6" fill-opacity="0.39"/><rect x="1940" y="226" width="4" height="6" fill-opacity="0.61"/><rect x="1984" y="226" width="4" height="6" fill-opacity="0.83"/><rect x="1962" y="240" width="4" height="6" fill-opacity="0.75"/><rect x="1940" y="254" width="4" height="6" fill-opacity="0.36"/><rect x="1973" y="254" width="4" height="6" fill-opacity="0.44"/><rect x="1995" y="254" width="4" height="6" fill-opacity="0.81"/><rect x="2006" y="268" width="4" height="6" fill-opacity="0.42"/><rect x="2201" y="212" width="4" height="6" fill-opacity="0.37"/><rect x="2201" y="240" width="4" height="6" fill-opacity="0.63"/><rect x="2245" y="240" width="4" height="6" fill-opacity="0.80"/><rect x="2297" y="154" width="4" height="6" fill-opacity="0.79"/><rect x="2308" y="168" width="4" height="6" fill-opacity="0.54"/><rect x="2330" y="182" width="4" height="6" fill-opacity="0.68"/><rect x="2341" y="182" width="4" height="6" fill-opacity="0.50"/><rect x="2352" y="182" width="4" height="6" fill-opacity="0.73"/><rect x="2308" y="196" width="4" height="6" fill-opacity="0.45"/><rect x="2341" y="196" width="4" height="6" fill-opacity="0.66"/><rect x="2297" y="210" width="4" height="6" fill-opacity="0.36"/><rect x="2308" y="210" width="4" height="6" fill-opacity="0.80"/><rect x="2341" y="210" width="4" height="6" fill-opacity="0.69"/><rect x="2352" y="238" width="4" height="6" fill-opacity="0.44"/><rect x="2319" y="266" width="4" height="6" fill-opacity="0.80"/><rect x="2352" y="266" width="4" height="6" fill-opacity="0.67"/><rect x="2398" y="188" width="4" height="6" fill-opacity="0.46"/><rect x="2376" y="202" width="4" height="6" fill-opacity="0.79"/><rect x="2387" y="202" width="4" height="6" fill-opacity="0.84"/><rect x="2420" y="202" width="4" height="6" fill-opacity="0.80"/><rect x="2409" y="216" width="4" height="6" fill-opacity="0.55"/><rect x="2376" y="230" width="4" height="6" fill-opacity="0.42"/><rect x="2420" y="244" width="4" height="6" fill-opacity="0.75"/><rect x="2376" y="258" width="4" height="6" fill-opacity="0.39"/></g><g fill="#1D1450"><rect x="70" y="120" width="98" height="162"/><rect x="226" y="176" width="74" height="106"/><rect x="352" y="92" width="110" height="190"/><rect x="600" y="96" width="100" height="186"/><rect x="712" y="150" width="78" height="132"/><rect x="1590" y="196" width="50" height="86"/><rect x="1880" y="142" width="110" height="140"/><rect x="2190" y="104" width="110" height="178"/><rect x="2330" y="170" width="80" height="112"/><rect x="850" y="214" width="150" height="68"/><rect x="850" y="150" width="4" height="64"/><rect x="887" y="150" width="4" height="64"/><rect x="924" y="150" width="4" height="64"/><rect x="961" y="150" width="4" height="64"/><rect x="996" y="150" width="4" height="64"/><rect x="850" y="150" width="150" height="4"/><rect x="850" y="182" width="150" height="4"/></g><g fill="#F6B76B" opacity="0.7"><rect x="137" y="130" width="5" height="7" fill-opacity="0.50"/><rect x="149" y="145" width="5" height="7" fill-opacity="0.66"/><rect x="137" y="160" width="5" height="7" fill-opacity="0.83"/><rect x="149" y="175" width="5" height="7" fill-opacity="0.45"/><rect x="101" y="190" width="5" height="7" fill-opacity="0.35"/><rect x="137" y="190" width="5" height="7" fill-opacity="0.58"/><rect x="149" y="190" width="5" height="7" fill-opacity="0.76"/><rect x="113" y="205" width="5" height="7" fill-opacity="0.46"/><rect x="149" y="220" width="5" height="7" fill-opacity="0.36"/><rect x="149" y="235" width="5" height="7" fill-opacity="0.45"/><rect x="101" y="250" width="5" height="7" fill-opacity="0.83"/><rect x="89" y="265" width="5" height="7" fill-opacity="0.63"/><rect x="245" y="186" width="5" height="7" fill-opacity="0.60"/><rect x="233" y="201" width="5" height="7" fill-opacity="0.53"/><rect x="269" y="201" width="5" height="7" fill-opacity="0.78"/><rect x="281" y="201" width="5" height="7" fill-opacity="0.68"/><rect x="245" y="231" width="5" height="7" fill-opacity="0.47"/><rect x="245" y="246" width="5" height="7" fill-opacity="0.36"/><rect x="245" y="261" width="5" height="7" fill-opacity="0.61"/><rect x="257" y="261" width="5" height="7" fill-opacity="0.51"/><rect x="269" y="261" width="5" height="7" fill-opacity="0.61"/><rect x="371" y="102" width="5" height="7" fill-opacity="0.38"/><rect x="383" y="102" width="5" height="7" fill-opacity="0.41"/><rect x="407" y="102" width="5" height="7" fill-opacity="0.71"/><rect x="419" y="117" width="5" height="7" fill-opacity="0.79"/><rect x="383" y="132" width="5" height="7" fill-opacity="0.47"/><rect x="407" y="132" width="5" height="7" fill-opacity="0.39"/><rect x="431" y="147" width="5" height="7" fill-opacity="0.62"/><rect x="371" y="162" width="5" height="7" fill-opacity="0.62"/><rect x="395" y="162" width="5" height="7" fill-opacity="0.84"/><rect x="431" y="162" width="5" height="7" fill-opacity="0.60"/><rect x="359" y="177" width="5" height="7" fill-opacity="0.73"/><rect x="383" y="177" width="5" height="7" fill-opacity="0.65"/><rect x="395" y="177" width="5" height="7" fill-opacity="0.40"/><rect x="359" y="192" width="5" height="7" fill-opacity="0.81"/><rect x="371" y="192" width="5" height="7" fill-opacity="0.75"/><rect x="431" y="192" width="5" height="7" fill-opacity="0.78"/><rect x="419" y="222" width="5" height="7" fill-opacity="0.52"/><rect x="431" y="222" width="5" height="7" fill-opacity="0.52"/><rect x="443" y="222" width="5" height="7" fill-opacity="0.50"/><rect x="371" y="237" width="5" height="7" fill-opacity="0.81"/><rect x="407" y="237" width="5" height="7" fill-opacity="0.50"/><rect x="359" y="252" width="5" height="7" fill-opacity="0.39"/><rect x="383" y="252" width="5" height="7" fill-opacity="0.80"/><rect x="395" y="252" width="5" height="7" fill-opacity="0.84"/><rect x="631" y="106" width="5" height="7" fill-opacity="0.77"/><rect x="643" y="106" width="5" height="7" fill-opacity="0.44"/><rect x="655" y="106" width="5" height="7" fill-opacity="0.58"/><rect x="679" y="106" width="5" height="7" fill-opacity="0.48"/><rect x="643" y="121" width="5" height="7" fill-opacity="0.70"/><rect x="667" y="121" width="5" height="7" fill-opacity="0.38"/><rect x="619" y="136" width="5" height="7" fill-opacity="0.42"/><rect x="667" y="136" width="5" height="7" fill-opacity="0.63"/><rect x="679" y="136" width="5" height="7" fill-opacity="0.39"/><rect x="607" y="151" width="5" height="7" fill-opacity="0.82"/><rect x="619" y="151" width="5" height="7" fill-opacity="0.59"/><rect x="643" y="151" width="5" height="7" fill-opacity="0.54"/><rect x="679" y="151" width="5" height="7" fill-opacity="0.62"/><rect x="643" y="166" width="5" height="7" fill-opacity="0.38"/><rect x="667" y="166" width="5" height="7" fill-opacity="0.83"/><rect x="655" y="181" width="5" height="7" fill-opacity="0.57"/><rect x="607" y="196" width="5" height="7" fill-opacity="0.78"/><rect x="667" y="196" width="5" height="7" fill-opacity="0.69"/><rect x="667" y="211" width="5" height="7" fill-opacity="0.39"/><rect x="607" y="226" width="5" height="7" fill-opacity="0.38"/><rect x="607" y="241" width="5" height="7" fill-opacity="0.42"/><rect x="643" y="241" width="5" height="7" fill-opacity="0.44"/><rect x="667" y="241" width="5" height="7" fill-opacity="0.40"/><rect x="679" y="241" width="5" height="7" fill-opacity="0.64"/><rect x="631" y="256" width="5" height="7" fill-opacity="0.80"/><rect x="719" y="160" width="5" height="7" fill-opacity="0.82"/><rect x="767" y="160" width="5" height="7" fill-opacity="0.48"/><rect x="719" y="175" width="5" height="7" fill-opacity="0.72"/><rect x="731" y="175" width="5" height="7" fill-opacity="0.71"/><rect x="767" y="175" width="5" height="7" fill-opacity="0.56"/><rect x="743" y="190" width="5" height="7" fill-opacity="0.69"/><rect x="731" y="205" width="5" height="7" fill-opacity="0.55"/><rect x="743" y="235" width="5" height="7" fill-opacity="0.62"/><rect x="767" y="235" width="5" height="7" fill-opacity="0.51"/><rect x="719" y="250" width="5" height="7" fill-opacity="0.58"/><rect x="719" y="265" width="5" height="7" fill-opacity="0.57"/><rect x="743" y="265" width="5" height="7" fill-opacity="0.64"/><rect x="767" y="265" width="5" height="7" fill-opacity="0.45"/><rect x="1609" y="206" width="5" height="7" fill-opacity="0.67"/><rect x="1597" y="251" width="5" height="7" fill-opacity="0.52"/><rect x="1609" y="266" width="5" height="7" fill-opacity="0.72"/><rect x="1911" y="152" width="5" height="7" fill-opacity="0.75"/><rect x="1947" y="167" width="5" height="7" fill-opacity="0.78"/><rect x="1971" y="167" width="5" height="7" fill-opacity="0.58"/><rect x="1911" y="182" width="5" height="7" fill-opacity="0.78"/><rect x="1935" y="182" width="5" height="7" fill-opacity="0.70"/><rect x="1899" y="197" width="5" height="7" fill-opacity="0.68"/><rect x="1887" y="212" width="5" height="7" fill-opacity="0.43"/><rect x="1899" y="212" width="5" height="7" fill-opacity="0.81"/><rect x="1971" y="212" width="5" height="7" fill-opacity="0.43"/><rect x="1899" y="227" width="5" height="7" fill-opacity="0.51"/><rect x="1923" y="227" width="5" height="7" fill-opacity="0.44"/><rect x="1935" y="227" width="5" height="7" fill-opacity="0.58"/><rect x="1935" y="242" width="5" height="7" fill-opacity="0.43"/><rect x="1911" y="257" width="5" height="7" fill-opacity="0.72"/><rect x="1947" y="257" width="5" height="7" fill-opacity="0.70"/><rect x="2245" y="114" width="5" height="7" fill-opacity="0.77"/><rect x="2269" y="114" width="5" height="7" fill-opacity="0.66"/><rect x="2197" y="144" width="5" height="7" fill-opacity="0.62"/><rect x="2269" y="144" width="5" height="7" fill-opacity="0.44"/><rect x="2281" y="144" width="5" height="7" fill-opacity="0.70"/><rect x="2209" y="159" width="5" height="7" fill-opacity="0.67"/><rect x="2281" y="159" width="5" height="7" fill-opacity="0.73"/><rect x="2197" y="174" width="5" height="7" fill-opacity="0.38"/><rect x="2257" y="174" width="5" height="7" fill-opacity="0.44"/><rect x="2209" y="204" width="5" height="7" fill-opacity="0.71"/><rect x="2233" y="204" width="5" height="7" fill-opacity="0.55"/><rect x="2257" y="204" width="5" height="7" fill-opacity="0.36"/><rect x="2221" y="219" width="5" height="7" fill-opacity="0.67"/><rect x="2245" y="219" width="5" height="7" fill-opacity="0.51"/><rect x="2257" y="219" width="5" height="7" fill-opacity="0.41"/><rect x="2281" y="219" width="5" height="7" fill-opacity="0.84"/><rect x="2221" y="234" width="5" height="7" fill-opacity="0.69"/><rect x="2233" y="234" width="5" height="7" fill-opacity="0.60"/><rect x="2269" y="234" width="5" height="7" fill-opacity="0.35"/><rect x="2221" y="249" width="5" height="7" fill-opacity="0.54"/><rect x="2269" y="249" width="5" height="7" fill-opacity="0.37"/><rect x="2209" y="264" width="5" height="7" fill-opacity="0.50"/><rect x="2221" y="264" width="5" height="7" fill-opacity="0.62"/><rect x="2233" y="264" width="5" height="7" fill-opacity="0.62"/><rect x="2385" y="180" width="5" height="7" fill-opacity="0.59"/><rect x="2349" y="225" width="5" height="7" fill-opacity="0.58"/><rect x="2361" y="225" width="5" height="7" fill-opacity="0.39"/><rect x="869" y="224" width="5" height="7" fill-opacity="0.80"/><rect x="881" y="224" width="5" height="7" fill-opacity="0.41"/><rect x="917" y="224" width="5" height="7" fill-opacity="0.67"/><rect x="965" y="224" width="5" height="7" fill-opacity="0.52"/><rect x="977" y="224" width="5" height="7" fill-opacity="0.54"/><rect x="881" y="239" width="5" height="7" fill-opacity="0.63"/><rect x="929" y="239" width="5" height="7" fill-opacity="0.40"/><rect x="941" y="239" width="5" height="7" fill-opacity="0.59"/><rect x="953" y="239" width="5" height="7" fill-opacity="0.70"/><rect x="965" y="239" width="5" height="7" fill-opacity="0.37"/><rect x="905" y="254" width="5" height="7" fill-opacity="0.78"/><rect x="929" y="254" width="5" height="7" fill-opacity="0.39"/></g><g stroke="#1D1450" stroke-width="2.4" stroke-linecap="round" fill="none"><line x1="1032" y1="282" x2="1032" y2="64"/><line x1="1048" y1="282" x2="1048" y2="64"/><line x1="1032" y1="282" x2="1048" y2="266"/><line x1="1048" y1="266" x2="1032" y2="250"/><line x1="1032" y1="250" x2="1048" y2="234"/><line x1="1048" y1="234" x2="1032" y2="218"/><line x1="1032" y1="218" x2="1048" y2="202"/><line x1="1048" y1="202" x2="1032" y2="186"/><line x1="1032" y1="186" x2="1048" y2="170"/><line x1="1048" y1="170" x2="1032" y2="154"/><line x1="1032" y1="154" x2="1048" y2="138"/><line x1="1048" y1="138" x2="1032" y2="122"/><line x1="1032" y1="122" x2="1048" y2="106"/><line x1="1048" y1="106" x2="1032" y2="90"/><line x1="1032" y1="90" x2="1048" y2="74"/><polyline points="1032,64 1040,30 1048,64" fill="none"/><line x1="1032" y1="64" x2="820" y2="66"/><line x1="1032" y1="76" x2="820" y2="72"/><line x1="820" y1="66" x2="820" y2="72"/><line x1="1032" y1="76" x2="1014" y2="64.2"/><line x1="1014" y1="64.2" x2="996" y2="75.3"/><line x1="996" y1="75.3" x2="978" y2="64.5"/><line x1="978" y1="64.5" x2="960" y2="74.6"/><line x1="960" y1="74.6" x2="942" y2="64.8"/><line x1="942" y1="64.8" x2="924" y2="74"/><line x1="924" y1="74" x2="906" y2="65.2"/><line x1="906" y1="65.2" x2="888" y2="73.3"/><line x1="888" y1="73.3" x2="870" y2="65.5"/><line x1="870" y1="65.5" x2="852" y2="72.6"/><line x1="852" y1="72.6" x2="834" y2="65.9"/><line x1="1048" y1="64" x2="1130" y2="64"/><line x1="1048" y1="72" x2="1130" y2="72"/><line x1="1130" y1="64" x2="1130" y2="72"/><line x1="1060" y1="64" x2="1068" y2="72"/><line x1="1076" y1="64" x2="1084" y2="72"/><line x1="1092" y1="64" x2="1100" y2="72"/><line x1="1108" y1="64" x2="1116" y2="72"/><line x1="1124" y1="64" x2="1132" y2="72"/><line x1="1040" y1="30" x2="890" y2="65"/><line x1="1040" y1="30" x2="1122" y2="64"/><line x1="900" y1="78" x2="900" y2="124"/><line x1="900" y1="131" x2="878" y2="140"/><line x1="900" y1="131" x2="922" y2="140"/></g><g fill="#1D1450"><rect x="1026" y="76" width="28" height="12"/><rect x="1104" y="72" width="24" height="18"/><rect x="894" y="74" width="12" height="5"/><rect x="896" y="124" width="8" height="7"/><rect x="862" y="140" width="76" height="5"/></g><g stroke="#1D1450" stroke-width="2.2" stroke-linecap="round" fill="none"><line x1="1294" y1="282" x2="1322" y2="62"/><line x1="1366" y1="282" x2="1338" y2="62"/><polyline points="1322,62 1330,38 1338,62"/><line x1="1294" y1="282" x2="1360.9" y2="242"/><line x1="1366" y1="282" x2="1299.1" y2="242"/><line x1="1299.1" y1="242" x2="1360.9" y2="242"/><line x1="1299.1" y1="242" x2="1356.3" y2="206"/><line x1="1360.9" y1="242" x2="1303.7" y2="206"/><line x1="1303.7" y1="206" x2="1356.3" y2="206"/><line x1="1303.7" y1="206" x2="1352.3" y2="174"/><line x1="1356.3" y1="206" x2="1307.7" y2="174"/><line x1="1307.7" y1="174" x2="1352.3" y2="174"/><line x1="1307.7" y1="174" x2="1348.7" y2="146"/><line x1="1352.3" y1="174" x2="1311.3" y2="146"/><line x1="1311.3" y1="146" x2="1348.7" y2="146"/><line x1="1311.3" y1="146" x2="1345.4" y2="120"/><line x1="1348.7" y1="146" x2="1314.6" y2="120"/><line x1="1314.6" y1="120" x2="1345.4" y2="120"/><line x1="1314.6" y1="120" x2="1341.8" y2="92"/><line x1="1345.4" y1="120" x2="1318.2" y2="92"/><line x1="1318.2" y1="92" x2="1341.8" y2="92"/><line x1="1318.2" y1="92" x2="1338" y2="62"/><line x1="1341.8" y1="92" x2="1322" y2="62"/><line x1="1322" y1="62" x2="1338" y2="62"/><line x1="1318.2" y1="92" x2="1266" y2="92"/><line x1="1316.4" y1="106" x2="1266" y2="92"/><line x1="1266" y1="92" x2="1266" y2="102"/><line x1="1341.8" y1="92" x2="1394" y2="92"/><line x1="1343.6" y1="106" x2="1394" y2="92"/><line x1="1394" y1="92" x2="1394" y2="102"/><line x1="1313.1" y1="132" x2="1252" y2="132"/><line x1="1311.3" y1="146" x2="1252" y2="132"/><line x1="1252" y1="132" x2="1252" y2="142"/><line x1="1346.9" y1="132" x2="1408" y2="132"/><line x1="1348.7" y1="146" x2="1408" y2="132"/><line x1="1408" y1="132" x2="1408" y2="142"/><line x1="1308" y1="172" x2="1266" y2="172"/><line x1="1306.2" y1="186" x2="1266" y2="172"/><line x1="1266" y1="172" x2="1266" y2="182"/><line x1="1352" y1="172" x2="1394" y2="172"/><line x1="1353.8" y1="186" x2="1394" y2="172"/><line x1="1394" y1="172" x2="1394" y2="182"/><line x1="1674.1" y1="282" x2="1694.2" y2="123.6"/><line x1="1725.9" y1="282" x2="1705.8" y2="123.6"/><polyline points="1694.2,123.6 1700,106.3 1705.8,123.6"/><line x1="1674.1" y1="282" x2="1722.3" y2="253.2"/><line x1="1725.9" y1="282" x2="1677.7" y2="253.2"/><line x1="1677.7" y1="253.2" x2="1722.3" y2="253.2"/><line x1="1677.7" y1="253.2" x2="1719" y2="227.3"/><line x1="1722.3" y1="253.2" x2="1681" y2="227.3"/><line x1="1681" y1="227.3" x2="1719" y2="227.3"/><line x1="1681" y1="227.3" x2="1716" y2="204.2"/><line x1="1719" y1="227.3" x2="1684" y2="204.2"/><line x1="1684" y1="204.2" x2="1716" y2="204.2"/><line x1="1684" y1="204.2" x2="1713.5" y2="184.1"/><line x1="1716" y1="204.2" x2="1686.5" y2="184.1"/><line x1="1686.5" y1="184.1" x2="1713.5" y2="184.1"/><line x1="1686.5" y1="184.1" x2="1711.1" y2="165.4"/><line x1="1713.5" y1="184.1" x2="1688.9" y2="165.4"/><line x1="1688.9" y1="165.4" x2="1711.1" y2="165.4"/><line x1="1688.9" y1="165.4" x2="1708.5" y2="145.2"/><line x1="1711.1" y1="165.4" x2="1691.5" y2="145.2"/><line x1="1691.5" y1="145.2" x2="1708.5" y2="145.2"/><line x1="1691.5" y1="145.2" x2="1705.8" y2="123.6"/><line x1="1708.5" y1="145.2" x2="1694.2" y2="123.6"/><line x1="1694.2" y1="123.6" x2="1705.8" y2="123.6"/><line x1="1691.5" y1="145.2" x2="1653.9" y2="145.2"/><line x1="1690.2" y1="155.3" x2="1653.9" y2="145.2"/><line x1="1653.9" y1="145.2" x2="1653.9" y2="152.4"/><line x1="1708.5" y1="145.2" x2="1746.1" y2="145.2"/><line x1="1709.8" y1="155.3" x2="1746.1" y2="145.2"/><line x1="1746.1" y1="145.2" x2="1746.1" y2="152.4"/><line x1="1687.8" y1="174" x2="1643.8" y2="174"/><line x1="1686.5" y1="184.1" x2="1643.8" y2="174"/><line x1="1643.8" y1="174" x2="1643.8" y2="181.2"/><line x1="1712.2" y1="174" x2="1756.2" y2="174"/><line x1="1713.5" y1="184.1" x2="1756.2" y2="174"/><line x1="1756.2" y1="174" x2="1756.2" y2="181.2"/><line x1="1684.2" y1="202.8" x2="1653.9" y2="202.8"/><line x1="1682.9" y1="212.9" x2="1653.9" y2="202.8"/><line x1="1653.9" y1="202.8" x2="1653.9" y2="210"/><line x1="1715.8" y1="202.8" x2="1746.1" y2="202.8"/><line x1="1717.1" y1="212.9" x2="1746.1" y2="202.8"/><line x1="1746.1" y1="202.8" x2="1746.1" y2="210"/><line x1="2049.8" y1="282" x2="2065.5" y2="158.8"/><line x1="2090.2" y1="282" x2="2074.5" y2="158.8"/><polyline points="2065.5,158.8 2070,145.4 2074.5,158.8"/><line x1="2049.8" y1="282" x2="2087.3" y2="259.6"/><line x1="2090.2" y1="282" x2="2052.7" y2="259.6"/><line x1="2052.7" y1="259.6" x2="2087.3" y2="259.6"/><line x1="2052.7" y1="259.6" x2="2084.7" y2="239.4"/><line x1="2087.3" y1="259.6" x2="2055.3" y2="239.4"/><line x1="2055.3" y1="239.4" x2="2084.7" y2="239.4"/><line x1="2055.3" y1="239.4" x2="2082.5" y2="221.5"/><line x1="2084.7" y1="239.4" x2="2057.5" y2="221.5"/><line x1="2057.5" y1="221.5" x2="2082.5" y2="221.5"/><line x1="2057.5" y1="221.5" x2="2080.5" y2="205.8"/><line x1="2082.5" y1="221.5" x2="2059.5" y2="205.8"/><line x1="2059.5" y1="205.8" x2="2080.5" y2="205.8"/><line x1="2059.5" y1="205.8" x2="2078.6" y2="191.3"/><line x1="2080.5" y1="205.8" x2="2061.4" y2="191.3"/><line x1="2061.4" y1="191.3" x2="2078.6" y2="191.3"/><line x1="2061.4" y1="191.3" x2="2076.6" y2="175.6"/><line x1="2078.6" y1="191.3" x2="2063.4" y2="175.6"/><line x1="2063.4" y1="175.6" x2="2076.6" y2="175.6"/><line x1="2063.4" y1="175.6" x2="2074.5" y2="158.8"/><line x1="2076.6" y1="175.6" x2="2065.5" y2="158.8"/><line x1="2065.5" y1="158.8" x2="2074.5" y2="158.8"/><line x1="2063.4" y1="175.6" x2="2034.2" y2="175.6"/><line x1="2062.4" y1="183.4" x2="2034.2" y2="175.6"/><line x1="2034.2" y1="175.6" x2="2034.2" y2="181.2"/><line x1="2076.6" y1="175.6" x2="2105.8" y2="175.6"/><line x1="2077.6" y1="183.4" x2="2105.8" y2="175.6"/><line x1="2105.8" y1="175.6" x2="2105.8" y2="181.2"/><line x1="2060.5" y1="198" x2="2026.3" y2="198"/><line x1="2059.5" y1="205.8" x2="2026.3" y2="198"/><line x1="2026.3" y1="198" x2="2026.3" y2="203.6"/><line x1="2079.5" y1="198" x2="2113.7" y2="198"/><line x1="2080.5" y1="205.8" x2="2113.7" y2="198"/><line x1="2113.7" y1="198" x2="2113.7" y2="203.6"/><line x1="2057.7" y1="220.4" x2="2034.2" y2="220.4"/><line x1="2056.7" y1="228.2" x2="2034.2" y2="220.4"/><line x1="2034.2" y1="220.4" x2="2034.2" y2="226"/><line x1="2082.3" y1="220.4" x2="2105.8" y2="220.4"/><line x1="2083.3" y1="228.2" x2="2105.8" y2="220.4"/><line x1="2105.8" y1="220.4" x2="2105.8" y2="226"/></g><g stroke="#B9AEEA" stroke-opacity="0.38" stroke-width="1.3" fill="none"><path d="M1394 102 Q1524 178.4 1653.9 152.4"/><path d="M1408 142 Q1525.9 207.2 1643.8 181.2"/><path d="M1394 182 Q1524 236 1653.9 210"/><path d="M1746.1 152.4 Q1890.1 207.2 2034.2 181.2"/><path d="M1756.2 181.2 Q1891.2 229.6 2026.3 203.6"/><path d="M1746.1 210 Q1890.1 252 2034.2 226"/><path d="M2105.8 181.2 Q2305.8 211.2 2420 187.2"/><path d="M2113.7 203.6 Q2313.7 233.6 2420 209.6"/><path d="M2105.8 226 Q2305.8 256 2420 232"/></g><g stroke="url(#g-wirefade)" stroke-width="1.3" fill="none"><path d="M1266 102 Q1146 126 1150 112"/><path d="M1252 142 Q1132 166 1150 152"/><path d="M1266 182 Q1146 206 1150 192"/></g><rect x="0" y="280" width="2400" height="4" fill="#1A1245"/><rect x="0" y="284" width="2400" height="16" fill="#0D0826"/><g fill="#FFFFFF" fill-opacity="0.16"><rect x="10" y="291" width="26" height="2"/><rect x="58" y="291" width="26" height="2"/><rect x="106" y="291" width="26" height="2"/><rect x="154" y="291" width="26" height="2"/><rect x="202" y="291" width="26" height="2"/><rect x="250" y="291" width="26" height="2"/><rect x="298" y="291" width="26" height="2"/><rect x="346" y="291" width="26" height="2"/><rect x="394" y="291" width="26" height="2"/><rect x="442" y="291" width="26" height="2"/><rect x="490" y="291" width="26" height="2"/><rect x="538" y="291" width="26" height="2"/><rect x="586" y="291" width="26" height="2"/><rect x="634" y="291" width="26" height="2"/><rect x="682" y="291" width="26" height="2"/><rect x="730" y="291" width="26" height="2"/><rect x="778" y="291" width="26" height="2"/><rect x="826" y="291" width="26" height="2"/><rect x="874" y="291" width="26" height="2"/><rect x="922" y="291" width="26" height="2"/><rect x="970" y="291" width="26" height="2"/><rect x="1018" y="291" width="26" height="2"/><rect x="1066" y="291" width="26" height="2"/><rect x="1114" y="291" width="26" height="2"/><rect x="1162" y="291" width="26" height="2"/><rect x="1210" y="291" width="26" height="2"/><rect x="1258" y="291" width="26" height="2"/><rect x="1306" y="291" width="26" height="2"/><rect x="1354" y="291" width="26" height="2"/><rect x="1402" y="291" width="26" height="2"/><rect x="1450" y="291" width="26" height="2"/><rect x="1498" y="291" width="26" height="2"/><rect x="1546" y="291" width="26" height="2"/><rect x="1594" y="291" width="26" height="2"/><rect x="1642" y="291" width="26" height="2"/><rect x="1690" y="291" width="26" height="2"/><rect x="1738" y="291" width="26" height="2"/><rect x="1786" y="291" width="26" height="2"/><rect x="1834" y="291" width="26" height="2"/><rect x="1882" y="291" width="26" height="2"/><rect x="1930" y="291" width="26" height="2"/><rect x="1978" y="291" width="26" height="2"/><rect x="2026" y="291" width="26" height="2"/><rect x="2074" y="291" width="26" height="2"/><rect x="2122" y="291" width="26" height="2"/><rect x="2170" y="291" width="26" height="2"/><rect x="2218" y="291" width="26" height="2"/><rect x="2266" y="291" width="26" height="2"/><rect x="2314" y="291" width="26" height="2"/><rect x="2362" y="291" width="26" height="2"/></g><g class="lamp" style="animation-delay:0.35s"><polygon points="65,162 77,162 123,282 19,282" fill="url(#g-cone)"/><ellipse cx="71" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="71" cy="162" r="34" fill="url(#g-glow)"/><rect x="64" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:0.46s"><polygon points="265,162 277,162 323,282 219,282" fill="url(#g-cone)"/><ellipse cx="271" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="271" cy="162" r="34" fill="url(#g-glow)"/><rect x="264" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:0.57s"><polygon points="465,162 477,162 523,282 419,282" fill="url(#g-cone)"/><ellipse cx="471" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="471" cy="162" r="34" fill="url(#g-glow)"/><rect x="464" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:0.68s"><polygon points="665,162 677,162 723,282 619,282" fill="url(#g-cone)"/><ellipse cx="671" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="671" cy="162" r="34" fill="url(#g-glow)"/><rect x="664" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:0.79s"><polygon points="865,162 877,162 923,282 819,282" fill="url(#g-cone)"/><ellipse cx="871" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="871" cy="162" r="34" fill="url(#g-glow)"/><rect x="864" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:0.90s"><polygon points="1065,162 1077,162 1123,282 1019,282" fill="url(#g-cone)"/><ellipse cx="1071" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="1071" cy="162" r="34" fill="url(#g-glow)"/><rect x="1064" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.01s"><polygon points="1265,162 1277,162 1323,282 1219,282" fill="url(#g-cone)"/><ellipse cx="1271" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="1271" cy="162" r="34" fill="url(#g-glow)"/><rect x="1264" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.12s"><polygon points="1465,162 1477,162 1523,282 1419,282" fill="url(#g-cone)"/><ellipse cx="1471" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="1471" cy="162" r="34" fill="url(#g-glow)"/><rect x="1464" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.23s"><polygon points="1665,162 1677,162 1723,282 1619,282" fill="url(#g-cone)"/><ellipse cx="1671" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="1671" cy="162" r="34" fill="url(#g-glow)"/><rect x="1664" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.34s"><polygon points="1865,162 1877,162 1923,282 1819,282" fill="url(#g-cone)"/><ellipse cx="1871" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="1871" cy="162" r="34" fill="url(#g-glow)"/><rect x="1864" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.45s"><polygon points="2065,162 2077,162 2123,282 2019,282" fill="url(#g-cone)"/><ellipse cx="2071" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="2071" cy="162" r="34" fill="url(#g-glow)"/><rect x="2064" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g class="lamp" style="animation-delay:1.56s"><polygon points="2265,162 2277,162 2323,282 2219,282" fill="url(#g-cone)"/><ellipse cx="2271" cy="283" rx="56" ry="4" fill="#FFB467" fill-opacity="0.28"/><circle cx="2271" cy="162" r="34" fill="url(#g-glow)"/><rect x="2264" y="160" width="14" height="2.6" rx="1.3" fill="#FFE2B0"/></g><g fill="#0F0A2C"><rect x="38" y="160" width="4" height="122"/><rect x="35" y="275" width="10" height="7"/><path d="M40 172 Q40 158 52 158 L70 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="62" y="155" width="18" height="6" rx="3"/><rect x="238" y="160" width="4" height="122"/><rect x="235" y="275" width="10" height="7"/><path d="M240 172 Q240 158 252 158 L270 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="262" y="155" width="18" height="6" rx="3"/><rect x="438" y="160" width="4" height="122"/><rect x="435" y="275" width="10" height="7"/><path d="M440 172 Q440 158 452 158 L470 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="462" y="155" width="18" height="6" rx="3"/><rect x="638" y="160" width="4" height="122"/><rect x="635" y="275" width="10" height="7"/><path d="M640 172 Q640 158 652 158 L670 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="662" y="155" width="18" height="6" rx="3"/><rect x="838" y="160" width="4" height="122"/><rect x="835" y="275" width="10" height="7"/><path d="M840 172 Q840 158 852 158 L870 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="862" y="155" width="18" height="6" rx="3"/><rect x="1038" y="160" width="4" height="122"/><rect x="1035" y="275" width="10" height="7"/><path d="M1040 172 Q1040 158 1052 158 L1070 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="1062" y="155" width="18" height="6" rx="3"/><rect x="1238" y="160" width="4" height="122"/><rect x="1235" y="275" width="10" height="7"/><path d="M1240 172 Q1240 158 1252 158 L1270 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="1262" y="155" width="18" height="6" rx="3"/><rect x="1438" y="160" width="4" height="122"/><rect x="1435" y="275" width="10" height="7"/><path d="M1440 172 Q1440 158 1452 158 L1470 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="1462" y="155" width="18" height="6" rx="3"/><rect x="1638" y="160" width="4" height="122"/><rect x="1635" y="275" width="10" height="7"/><path d="M1640 172 Q1640 158 1652 158 L1670 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="1662" y="155" width="18" height="6" rx="3"/><rect x="1838" y="160" width="4" height="122"/><rect x="1835" y="275" width="10" height="7"/><path d="M1840 172 Q1840 158 1852 158 L1870 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="1862" y="155" width="18" height="6" rx="3"/><rect x="2038" y="160" width="4" height="122"/><rect x="2035" y="275" width="10" height="7"/><path d="M2040 172 Q2040 158 2052 158 L2070 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="2062" y="155" width="18" height="6" rx="3"/><rect x="2238" y="160" width="4" height="122"/><rect x="2235" y="275" width="10" height="7"/><path d="M2240 172 Q2240 158 2252 158 L2270 158" fill="none" stroke="#0F0A2C" stroke-width="3" stroke-linecap="round"/><rect x="2262" y="155" width="18" height="6" rx="3"/></g></svg></div>
+  </section>
+
+  <!-- Metrics Highlights Ribbon -->
+  <section class="nm relative z-20 -mt-10 sm:-mt-14 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/80 border border-slate-100 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
+      <div class="flex items-center space-x-4 pt-3 sm:pt-0">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shrink-0 border border-orange-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-slate-900 tracking-tight">Since 2021</div>
+          <div class="text-xs font-semibold text-orange-600 uppercase tracking-wide">GST Registered Contractor</div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 pt-3 sm:pt-0 lg:pl-6">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-700 flex items-center justify-center shrink-0 border border-cyan-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-slate-900 tracking-tight">Turnkey</div>
+          <div class="text-xs font-semibold text-cyan-700 uppercase tracking-wide">Electrical + Civil Synergy</div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 pt-3 lg:pt-0 lg:pl-6">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-slate-900 tracking-tight">Govt. &amp; Commercial</div>
+          <div class="text-xs font-semibold text-amber-700 uppercase tracking-wide">Street Lights &amp; Grid Lines</div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 pt-3 lg:pt-0 lg:pl-6">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-slate-900 tracking-tight">Odisha &amp; WB</div>
+          <div class="text-xs font-semibold text-emerald-700 uppercase tracking-wide">HQ: CDA Cuttack</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="nm py-24 sm:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-xs font-bold tracking-wider text-orange-700 uppercase">
+          <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+          <span class="">About M/S. Tulshi Enterprises</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          One Unified Partner for Critical Power &amp; Civil Infrastructure in Odisha &amp; West Bengal
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          Headquartered at CDA, Sector-10, Cuttack, <strong class="text-slate-900 font-semibold">M/S. Tulshi Enterprises</strong> delivers dependable government municipal contracts, industrial power line networks, substation setups, and full-spectrum civil constructions across Odisha and West Bengal.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          We bridge the common gap between civil foundations and electrical engineering. By managing earth excavation, high-mast pole casting, transformer commissioning, and line testing under one accountable management team, we eliminate delays and ensure compliance with state safety and electrical inspectorate codes.
+        </p>
+
+        <!-- Credentials Inset with authentic telemetry photo -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-slate-900 to-[#1e1844] text-white flex flex-col sm:flex-row items-center gap-4 shadow-lg border border-white/10">
+          <div class="w-full sm:w-28 h-20 rounded-xl overflow-hidden shrink-0 border border-white/20 relative">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeIt1_Ml3gK8QQCBs8CosqOzqCOadu3-mArWvKqVcgK3WDVTh1if-8Cr7sRO4cOjQu5WtqcYTRBZiCd730zcM6agZNSCi38QOU44VQKm483KLJdmDtaqNH4l1SbaKLPcg-E3dwqR60wGL-5lWp2Zn40Ew2ITquZbMQTDEl0F40checHIIjVKT608umi-ck0fS9tplFuzpjQCPQDWQADPA1lHwytUxya-LXMQXvJVclcTIniVrAEhVTTeNVEbxozCNebQ" alt="Pole vertical alignment telemetry inspection" class="w-full h-full object-cover">
+            <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded text-[9px] bg-black/70 text-cyan-300 font-mono">OD-SITE</span>
+          </div>
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wide">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              In-House Technical Crew &amp; Lifting Tools
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Direct supervision of 9M/12M tubular pole hoisting, foundation centering, and DISCOM standard inspections across Odisha &amp; West Bengal.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-wrap items-center gap-4">
+          <a href="#contact" class="px-6 py-3 rounded-full bg-[#120d2b] hover:bg-[#1f1747] text-white text-sm font-semibold transition-colors shadow-md">
+            Request Company Profile
+          </a>
+          <a href="https://wa.me/917787808990" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 bg-emerald-50 px-5 py-3 rounded-full transition-colors border border-emerald-200">
+            <svg class="w-4 h-4 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.741.964 1.2.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.102-.115.434-.505.549-.679.116-.173.232-.144.39-.086s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1 0.824z"></path></svg>
+            <span class="">WhatsApp Technical Desk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated Field Execution Gallery (12 Worksite Proofs) -->
+  <section id="worksite-gallery" class="py-24 bg-gradient-to-b from-slate-900 via-[#161233] to-[#120d2b] text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold tracking-widest uppercase mb-4">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span class="">Ground Reality &amp; Real Execution</span>
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Field Execution &amp; Project Footprint
+        </h2>
+        <p class="text-base text-slate-300 mt-4 leading-relaxed">
+          Unfiltered worksite photographs across Odisha and West Bengal showing foundation casting, pneumatic rock breaking, armored cable trenching, pole staging, and night lighting trials.
+        </p>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- 1. Brajrajnagar Foundation -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-amber-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb09y9s06dS4SdJL8RGh5mF7J33spNtwWjfhX1hAn4fgBV3Tu7tfUgvzBvlXRhDpY7MSAPqgGktqM6iKdoej2m8eHdYsDEvla1cJauf4a6jYwN24srHzodi8pDgeQ3qOyDicQWTSc3TqIsAd_RBtzbyZTLZDOx00VZ9m6pcRlW-8ODfBuLX9g7H0-Gu2XbJBDOOqbvbKYYKMq279x0WIZYnhFlheXXhQphu8ybvyrv9UqHQQFr5PPGoFr5g_NoMsCdgA" alt="Anchor bolt cage assembly" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950">Civil Foundation</span>
+    <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-emerald-400 border border-emerald-500/30">GPS Verified</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">Brajrajnagar High-Mast Foundation</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Anchor bolt cage assembly, electrical conduit sleeving, and shuttering for municipal street illumination plinth.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Jharsuguda Dist.</span>
+      <span class="text-amber-400 font-medium">Brajrajnagar</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Pneumatic Rock Chiseling -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-orange-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqhuWRNAP3idEoCC4Y1wMazSpqAYQYfWzPi5BPTg5qT84vUWWXWCJ5gAPiMcpWFbVHllHSlDm33EXnO30tYnh6WngS-K__4VOWB3ztKFPJy9BbsEUaNC63k1oZIslq3xYIgT3_m0kGd6Gcx0BTSpzoGSX17YCbqz46zxZTCk_AHKJcPGHHq5T43ELOMty7R_aVkeQ9R4bAMQnr6maSXgjEa853-upowHnc8cblbIswha_S6ISw5mSX8jpNiSRFVuBLQ" alt="Pneumatic rock breaker excavation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white">Hard Strata Excavation</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-orange-400 transition-colors">Pneumatic Rock Chiseling</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Heavy-duty motorized pneumatic hammer excavation breaking through hard basalt rock strata for secure pole footing.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Mechanical Tooling</span>
+      <span class="text-orange-400 font-medium">Hard Strata Ground</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Feeder Cable Trenching -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-emerald-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVF4JDSBtxYBWPCXBQcuNutHbxCPN_f7yW0UaWn2ddxwtkyPiB77iEqTn3U5cSgPoZeN8ERVWGwBXeijlYF-yo_7o3rekGv-JF3XHIrqnPaD4ZASKCFSd9trDWPwltLAWUgVDk6Y6kwtmAjSgInzppC0mNY4-47hUJsI0fwFho8b5tdKrqk4Kov929dAg1JBTbMjTGpjs_219SFCXFFAJ6wLFnauyyDt_TP5JiU7asmAN-B9nca-0dxsTYOIErL6HQ_A" alt="Armored cable trench laying" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white">Cabling &amp; Trenching</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">Feeder Line Trenching &amp; Laying</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Standard depth trenching for XLPE armored underground feeder cables alongside industrial perimeter walls.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">XLPE Armored Cable</span>
+      <span class="text-emerald-400 font-medium">Perimeter Feed</span>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Octagonal Poles Staging -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-cyan-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_h9RdYheloyN4c1IpriWWUQabWxkxW_jNMncccPBa4c0xoL0S97GlmsZZaEUPKiQWz9YzSwF9M5X-2NsRfnL_bwg-gVNWDMHjjIsdZcgoR3m0bo-b7DARVMug0AXuc8frrUEXAKf8JmFYCAagmKJrm1WKc8pfjj1c-CwUE5P6FGKXARqF166CJ8VPldDvKX6sZTfC89o8muWaMZWBBjZZzP3jRovlKH0MqUUmm_b3NhGBmN93foRxoBEp7N8guI3p3w" alt="Octagonal galvanized poles staged" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-600 text-white">Material Staging</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">9M Octagonal Galvanized Poles</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Hot-dip galvanized octagonal poles with pre-welded base plates, junction inspection doors, and bracket fittings.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">IS Standard Zinc Coat</span>
+      <span class="text-cyan-400 font-medium">Site Staging</span>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Pole Wiring Termination -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-teal-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDun8BZJiD8pxj0FcZjRpGm_cAA2XjoTsu-kiQj9nGc_FKssptmgm9KCfiEgktuxIjcr5mxA_1dHgae5GlhfLSQIk6YClegQYchjwOeVhQLMcK4rwY_bWXlyX3AXTUJogLhQna5BuM3eKlngdXYOZorKnSOnpyW5q7CsXpudCNTZ6W1cewYuScTQa3QqQL_84-AhUpNMnOyt0JGQPnyWAP98qKrT9vm7ybMBp4pSRycOED-ax43N1_4BXXhmgt7I_dWEQ" alt="Wireman loop wiring termination" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white">Electrical Fitting</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-teal-400 transition-colors">Pole Loop-In / Loop-Out Wiring</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Skilled wireman terminating 4-core cable into cut-out fuse boxes with proper earthing gland continuity.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Cut-out Fuse Assembly</span>
+      <span class="text-teal-400 font-medium">Earthing Verified</span>
+    </div>
+  </div>
+</div>
+
+<!-- 6. Night Lux Photometric Handover -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-yellow-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzpAOlS1i6peX7_-aq-jp0BD6a3hdBebrhPdNw5A92JJu-Pc1rm8h0a1QHlJgHRdNKeM6xU34FXghbruOJsiYYgXAl8Tl4TutmD3EL-CkRa56Yovv9LHUSLnt2gPaLXAcek0WBjIa9ZEOEdIksd59ol6ngm5-CMiRPb_MqWlTnLPQNh2UW9f46pJpE1hAzBgIyutbU8LunYdWpgT8pG7g1r3dKg7SnHNnbOMcsWPJXwccO725hcs_KLzd9yahWMxNEvQ" alt="Night lux photometric test" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-yellow-500 to-amber-500 text-slate-950">Commissioning Trial</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-yellow-300 transition-colors">Night Lux &amp; Photometric Handover</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">High-intensity LED luminaire energization test confirming zero dark spots, uniform lux spread, and automated timer relay function.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Municipal Corridor</span>
+      <span class="text-yellow-300 font-medium">Energized &amp; Live</span>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Pre-Erection Assembly -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-amber-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLhPOf__vrMlxkQu8LajmZQx2fNXzjxDm5lMks2XlyVvFBrOftSbnYXlTrSURotGQbjXFp4lrPxWSv5Vtc18893QRron631BIXsSPFC8Dqla2J5Pppwx79jS8TWSUrM7-Xx9LiCCNXIUf7xHWBcTuNWo_SPL5CVDT1BPmdf5v1ktklmoGTqkb55aQHBTLho9ChV2Jpl81G1WBWPSZXCRSeXb7h9Omufv2XL686ycx7Zi_ZnEbzjQePXjdLX5F8PSHWRw" alt="Pre-erection pole assembly and wiring" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950">Assembly &amp; Wiring</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">Pre-Erection Pole Assembly &amp; Wiring</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Ground-level luminaire arm attachment and internal cable drawing prior to hydraulic crane erection.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Hexagonal Shaft</span>
+      <span class="text-amber-400 font-medium">Base Flange</span>
+    </div>
+  </div>
+</div>
+
+<!-- 8. Perimeter Pole Alignment -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-cyan-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZxVcBj9GwJnN8Q5LtVLY4FBN5CYFvfxtfTLtwzyxs153A8cJiH29OsXNT4kLoeEEkUOxXnrQh1FUYFzd_zw8dB2nkQYoZ3cxdvIvRLaNE5up7Fy5hOeWbfHD3WGOtiKewnn6_KiH5vubpSJ0TmM85muzPVNbmAAZmN4ypCvnGzl2V2Q8M3mOqpxv2qUkOREvD1WQD91QOYtLL_Rcety0ZSjt_XTr_aa2FVp6q9MPqTcgJzRKDMpVZ9sGlOklyBZb-Xw" alt="Perimeter pole vertical plumb alignment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-600 text-white">Plumb &amp; Grouting</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">Perimeter Pole Vertical Plumb Alignment</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Vertical leveling, base anchor torquing, and shrink-resistant concrete grout packing under perimeter pole base.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Dual Nut Anchor</span>
+      <span class="text-cyan-400 font-medium">Laser Leveled</span>
+    </div>
+  </div>
+</div>
+
+<!-- 9. Perimeter Illumination Post-Erection -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-orange-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoKWFam0wsV-x4_PuN32geL8AVMYKfzSsCZHNQQbrF_7uAERDu-MG7V3dJsizn17JCFSeJx_QsQROm57WAI8zCKZcUeOMkRtLAbOq2tdgs2hjfFtJsVztrkK3eJ6d18rhYej9mH-obMmpE1S7TWUosyGCOVZ0vme8y-2oPB-QiMXf_MvO4shBywKn_hmuz_QyB2TnjPl0hUDBqQioGuiwqSf8lwSnwnSsLGv0t9YtM_B7-isGYBrKckVfF972XQX1tTg" alt="Perimeter illumination post-erection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white">Boundary Lighting</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-orange-400 transition-colors">Perimeter Illumination Post-Erection</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Full boundary line pole erection along concrete perimeter wall with luminaire angle calibration.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Industrial Enclosure</span>
+      <span class="text-orange-400 font-medium">Dusk Run</span>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Night Perimeter Security Energization -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-yellow-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3FINpq5-e2YrqsOMXMoYsAYl4C0Pvn0JZ8o5CEMdNZEdDK4tlNnmvBDCn78ZOQmZdzaUjwlGYcdvHTxefqwF03PwTeRzcGiJBRBFbBbjKulILLDUd2Qv-81ePiObcQ_EQcuo5-1n4AxncjviFk4olijdGAPOtlIhtHjIKlCE0QK4XOPS98qjv1mMKu-D0BoSfVzPDUUcsc6X_AeI_VTVYjv12Kdj8sUE45jLoz9U-lLmaij_bjzKsTM4tXyszAQDbqg" alt="Night perimeter security energization" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-yellow-500 to-amber-500 text-slate-950">Security Energization</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-yellow-300 transition-colors">Night Perimeter Security Energization</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">5000K daylight-white LED roadway and boundary illumination energization test along perimeter line.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Night Handover</span>
+      <span class="text-yellow-300 font-medium">High Uniformity</span>
+    </div>
+  </div>
+</div>
+
+<!-- 11. Dual Wiremen Conduit Setting -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-emerald-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD54WUQosZAclQYBHqmrTXhl1A-vwIoDmvA26JcNqAbXRu5Cxjv8vnbTRNXCjC4qK8EbRESewpAMMh3-YWd-cisHdTuhx70lIvoZqZ3Vxhx_j2blehEjbMcn2pgfi_oaD_9VOPfJZBvTz4xEvWM-2sqmfLoztWuNASYHV0SGzCIc9MUS-TylwCM88lVC7ZJODD-E7YQyTgoy0afupa_Ztl5E_LEt6Tm8aDSyvJctt9oRXWI3nvFCaQbjJO9qYDzfqIWOA" alt="Dual wiremen foundation conduit setting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white">Civil &amp; Conduit</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">Dual Wiremen Foundation Conduit Setting</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Wiremen team aligning electrical HDPE conduits and anchor template prior to high-grade RCC pour.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">HDPE Sleeve</span>
+      <span class="text-emerald-400 font-medium">Rebar Centering</span>
+    </div>
+  </div>
+</div>
+
+<!-- 12. Public Street Lighting Handover -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-cyan-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVxgWwXxMHzVWFJB2Bxw92sllgOjlqcEMoFxFhxG1fyro6QhbKqNG9FeGYtdCxq3f6FUicqyIKFvyJeCS8K_pTo_-sK5jQyA1mF-pTLhm18rs0jB48pywZW4jqfFzRehPa-M_peI3X2_cEIJdpN_aXLIVjtmTiTJFGJVlBFP92ohsdsdvKsSjH6VeE1RxAq4l1igtXooZd80lI0hgUi-BpQV3Dm6lsF5Q9w66IbrZhgXYeuK7CGw2ZgeoNYLosticTmg" alt="Public commercial street lighting handover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-600 text-white">Public Infrastructure</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">Public Commercial Street Lighting Handover</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Nighttime lux survey and road illumination handover for public transit corridor.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Town Corridor</span>
+      <span class="text-cyan-400 font-medium">Automated Control</span>
+    </div>
+  </div>
+</div>
+
+<!-- 13. Avenue Billboard & Junction Illumination -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-amber-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDil54IpvQdFIosxcM6kECXw93uTmsGhCCko296rfin1VaC17GXLH3e8nTQDrddqwZtut-23mH6knDEO4wxwa7B3jBkjifh05BlH4JuXxj_EX007xEjOBrdVRwjXnUF_R_T3RCaybz1772WA6Ev6dMPxqcGVHTMcebOCijS-4laiq-Aaf0LSNl_oIP3S-9J2s2m3a6pX2basDOilG9RdARiq10rPfT8JQemH1Eq7l9SFzJOR_wTLPfTJcSCXractLRrHA" alt="Avenue billboard and junction illumination" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950">Highway &amp; Avenue</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">Avenue Billboard &amp; Junction Illumination</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Continuous street luminaire sequence verifying roadway safety and intersection visibility.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Streetlight Matrix</span>
+      <span class="text-amber-400 font-medium">100% Uptime</span>
+    </div>
+  </div>
+</div>
+
+<!-- 14. Township Residential Illumination -->
+<div class="group rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl hover:border-emerald-400/60 transition-all">
+  <div class="h-64 overflow-hidden relative">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtsv1RhlD4jEaSIuZ8OEwa8ALZpRdDZwqkp4xVNp380bWYX3emX-LeOEHOtXr4ps84xKfsJU49r5tRVRT247hrzR9mUkpGXvPlyjALIS6u9HGDfbfo6hPw2d_hAkAcps-2T1__SjDzzrKUduQ4jz6QwyVYlpAX982QrILq7qea2zwCjRCxT78qodiFd2YYAdzNHErFW0__kW-ncjqkuVF5uc4Cg6ErjyW9ssEZZyZbt9CIeRhtiC_Ewv5Dl6LbtL5mNQ" alt="Township residential illumination" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white">Community Electrification</span>
+  </div>
+  <div class="p-5">
+    <h4 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">Township Residential Illumination</h4>
+    <p class="text-xs text-slate-300 mt-1 leading-relaxed">Energized residential and access road lighting line ensuring uniform illuminance without pedestrian glare.</p>
+    <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+      <span class="">Feeder Energized</span>
+      <span class="text-emerald-400 font-medium">Zero Glare</span>
+    </div>
+  </div>
+</div></div>
+
+      <div class="text-center mt-12">
+        <a href="gallery.html" class="inline-flex items-center px-6 py-3 rounded-full bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400 transition-colors">View Full Gallery &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section -->
+  <section id="services" class="nm py-24 bg-slate-50 border-y border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-xs font-bold tracking-widest text-orange-600 uppercase mb-3">
+          <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+          <span class="">Comprehensive Capabilities</span>
+          <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Our Core Electrical &amp; Civil Capabilities
+        </h2>
+        <p class="text-base text-slate-600 mt-4 leading-relaxed">
+          Structured execution from topographic survey, excavation, and structural pouring to electrical cabling, line charging, and municipal handover.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <article class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 p-3 rounded-xl bg-amber-500/10 text-amber-600 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">12M - 30M Poles</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">Street Lighting &amp; High Mast Masts</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Turnkey installation of municipal streetlights, octagonal poles, and 12m to 30m high-mast lighting systems with automated feeder panels and timer controllers.</p>
+          </div>
+          <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-700">
+            <span class="">Municipal &amp; Highway Grade</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </article>
+
+        <!-- Service 2 -->
+        <article class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-cyan-400 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 p-3 rounded-xl bg-cyan-500/10 text-cyan-600 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-100 text-cyan-800">11kV &amp; 33kV Lines</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">HT &amp; LT Overhead Line Works</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Erection of 11kV/33kV distribution lines, PCC/steel tubular pole erection, conductor stringing, AB cabling, stay assembly, and line clearance permits across Odisha &amp; WB.</p>
+          </div>
+          <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-cyan-700">
+            <span class="">DISCOM Approved Norms</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </article>
+
+        <!-- Service 3 -->
+        <article class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 p-3 rounded-xl bg-emerald-500/10 text-emerald-600 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">Substations &amp; DTR</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">Substation &amp; Transformer Installations</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Complete plinth-mounted and pole-mounted distribution transformer sub-stations (DTR), isolators, lightning arrestors, and deep earthing grid networks.</p>
+          </div>
+          <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-700">
+            <span class="">Safety &amp; Compliance Tested</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Proposal Quotation Form -->
+  <section id="contact" class="py-24 bg-gradient-to-b from-[#120d2b] to-[#0a0718] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Contact Information Left -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold tracking-wider uppercase">
+            <span class="">Fast Response Desk</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Get an Official BOQ Quote for Your Project
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Whether preparing a municipal tender, expanding an industrial plant, or sourcing certified octagonal poles, our engineers provide fast, accurate estimations.
+          </p>
+          <div class="space-y-4 pt-4">
+            <div class="flex items-start space-x-3 text-sm text-slate-300">
+              <span class="text-amber-400 mt-0.5">📍</span>
+              <div class="">
+                <strong class="text-white block">Central Operations Office</strong>
+                Sector-10, Markat Nagar, CDA, Cuttack, Odisha 753014
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 text-sm text-slate-300">
+              <span class="text-cyan-400 mt-0.5">📞</span>
+              <div class="">
+                <strong class="text-white block">Direct Phones</strong>
+                +91 77878 08990 (Site) • 0671-3594267 (Office)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Form Right with Tab Selector -->
+        <div class="lg:col-span-7">
+          <div class="nm bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
+            <div class="flex items-center gap-3 p-1 rounded-xl bg-slate-100 mb-6">
+              <button id="tab-tender" onclick="setEnquiryType('tender')" class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-slate-600 hover:text-slate-900">
+                Turnkey Tender Contracting
+              </button>
+              <button id="tab-material" onclick="setEnquiryType('material')" class="flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-cyan-600 text-white shadow-sm">
+                Pole &amp; Material Supply BOQ
+              </button>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Full Name *</label>
+                  <input type="text" required="" placeholder="e.g., Rajesh Mohanty" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number *</label>
+                  <input type="tel" required="" placeholder="+91 98765 43210" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Email Address</label>
+                  <input type="email" placeholder="name@company.com" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Project Category</label>
+                  <select id="project-category-select" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500">
+                    <option value="street-lighting">Street Lighting &amp; High Mast</option>
+                    <option value="line-works">HT/LT Transmission Line Works</option>
+                    <option value="substation">Substation &amp; DTR Transformers</option>
+                    <option value="civil-rcc">Civil RCC &amp; Heavy Foundations</option>
+                    <option value="pole-procurement">Octagonal Pole Procurement</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Project Site Location</label>
+                <input type="text" placeholder="e.g., Cuttack, Bhubaneswar, Jajpur, Jharsuguda, Kharagpur" class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Scope of Work Summary</label>
+                <textarea rows="3" placeholder="Estimated capacity, number of poles, area in sq.ft, or BOQ specification..." class="w-full rounded-xl border border-slate-200 p-3 text-sm focus:border-orange-500 focus:ring-orange-500"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-sm uppercase tracking-wider shadow-lg transition-all">
+                Submit Quotation Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0b081c] text-slate-400 text-xs py-10 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KUBJ32wXbiHRE0z83sG4GC9p3PeAuMUl5h6EZ0uFGXba7f-hceoxt_sTyOw3FDfcsmQoeHdquo2CrRf2UyYYeVAR-USJDNxGbBMfOwxxONtGlPK3Z2iEkwCXKZNzNnDyEpkZ5oszhL9tLn4JYfRxOB6_2JpsiIQgBFODDR-NcBT8ZJtRqwEZhjYHnH6zrOLUTVGxqNCPLdVH8hI15goPZOB0Ib9kWVLQ3vpyWWmXFOiXoEDE4nRArTZNcLuIzCitng" alt="Tulshi Enterprises" class="h-8 w-auto object-contain brightness-110">
+      <span class="text-slate-500">|</span>
+      <span class="">Odisha &amp; West Bengal Electrical &amp; Civil Contractor</span>
+    </div>
+    <div class="">
+      © 2026 M/S. Tulshi Enterprises. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Day / night lamp switch, then the enquiry form helpers -->
+<script>
+  // ===== Day / night mode with a hanging lamp that swings on its cord =====
+  (function () {
+    var KEY = 'tulshi-mode';
+    var bodyEl = document.body;
+    var label = document.getElementById('theme-btn-label');
+    var pendant = document.getElementById('pendant');
+    var svg = document.getElementById('pdSvg');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setMode(mode, save) {
+      var night = mode === 'night';
+      bodyEl.classList.toggle('mode-night', night);
+      bodyEl.classList.toggle('mode-day', !night);
+      if (label) label.textContent = night ? 'Switch to Day' : 'Switch to Night';
+      if (pendant) { pendant.classList.remove('pd-ignite'); if (night) { void pendant.offsetWidth; pendant.classList.add('pd-ignite'); } }
+      if (save) { try { localStorage.setItem(KEY, mode); } catch (e) {} }
+    }
+    function toggleMode() { setMode(bodyEl.classList.contains('mode-night') ? 'day' : 'night', true); }
+    var saved = 'night';
+    try { saved = localStorage.getItem(KEY) || 'night'; } catch (e) {}
+    setMode(saved === 'day' ? 'day' : 'night', false);
+
+    if (!svg) { window.pullSwitchAction = toggleMode; return; }
+
+    // ---------- verlet rope physics ----------
+    var AX = 160, AY = 8;
+    var CORD_N = 8, CORD_SEG = 11;
+    var CH_N = 13, CH_SEG = 6.5, CH_LEN = CH_N * CH_SEG;
+    var ATT = { x: 15, y: 70 };
+    var GRAV = 0.42, DAMP = 0.993;
+    function P(x, y, im) { return { x: x, y: y, px: x, py: y, im: im }; }
+    var cord = [], chain = [], i;
+    for (i = 0; i <= CORD_N; i++) cord.push(P(AX, AY + i * CORD_SEG, i === 0 ? 0 : (i === CORD_N ? 0.08 : 1)));
+    var lamp = cord[CORD_N];
+    var ang = 0, cs = 1, sn = 0;
+    function lampFrame() { var a = cord[CORD_N - 1], dx = lamp.x - a.x, dy = lamp.y - a.y; ang = Math.atan2(-dx, dy); cs = Math.cos(ang); sn = Math.sin(ang); }
+    function world(lx, ly) { return { x: lamp.x + lx * cs - ly * sn, y: lamp.y + lx * sn + ly * cs }; }
+    lampFrame();
+    var at0 = world(ATT.x, ATT.y);
+    for (i = 0; i <= CH_N; i++) chain.push(P(at0.x, at0.y + i * CH_SEG, i === 0 ? 0 : (i === CH_N ? 0.5 : 1)));
+    var handle = chain[CH_N];
+
+    var drag = null, target = null, start = null, moved = 0, armed = false, wind = 0;
+
+    function integrate(p, fx, damp) {
+      if (!p.im) return;
+      var vx = (p.x - p.px) * damp, vy = (p.y - p.py) * damp;
+      p.px = p.x; p.py = p.y;
+      p.x += vx + fx; p.y += vy + GRAV;
+    }
+    function solve(list, seg) {
+      for (var k = 0; k < list.length - 1; k++) {
+        var a = list[k], b = list[k + 1];
+        var dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1e-6, w = a.im + b.im;
+        if (!w) continue;
+        var f = (d - seg) / d / w;
+        a.x += dx * f * a.im; a.y += dy * f * a.im;
+        b.x -= dx * f * b.im; b.y -= dy * f * b.im;
+      }
+    }
+    function clampTo(cx, cy, p, max) {
+      var dx = p.x - cx, dy = p.y - cy, d = Math.sqrt(dx * dx + dy * dy);
+      return d > max ? { x: cx + dx / d * max, y: cy + dy / d * max } : { x: p.x, y: p.y };
+    }
+    function pin(p, t) { p.px = p.x; p.py = p.y; p.x = t.x; p.y = t.y; }
+
+    function step() {
+      for (var k = 0; k < cord.length; k++) integrate(cord[k], cord[k] === lamp ? wind : 0, DAMP);
+      for (k = 0; k < chain.length; k++) integrate(chain[k], 0, 0.965);
+      var lt = null, ht = null;
+      if (drag === 'lamp') { lt = clampTo(AX, AY, target, CORD_N * CORD_SEG); pin(lamp, lt); }
+      for (var it = 0; it < 12; it++) {
+        cord[0].x = AX; cord[0].y = AY;
+        solve(cord, CORD_SEG);
+        if (lt) { lamp.x = lt.x; lamp.y = lt.y; }
+        lampFrame();
+        var a = world(ATT.x, ATT.y);
+        chain[0].x = a.x; chain[0].y = a.y;
+        if (drag === 'handle' && it === 0) { ht = clampTo(a.x, a.y, target, CH_LEN + 30); pin(handle, ht); }
+        solve(chain, CH_SEG);
+        if (ht) { handle.x = ht.x; handle.y = ht.y; }
+      }
+      if (drag === 'handle') {
+        var c0 = chain[0], dx = handle.x - c0.x, dy = handle.y - c0.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d > CH_LEN) { var e = (d - CH_LEN) / d; lamp.x += dx * e * 0.3; lamp.y += dy * e * 0.3; }
+        if (dy > CH_LEN + 14) armed = true;
+      }
+      wind *= 0.9;
+    }
+
+    var beads = [], g = document.getElementById('pdBeads');
+    for (i = 0; i < CH_N * 2; i++) {
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('r', '1.9'); c.setAttribute('fill', 'url(#pd-bead)');
+      g.appendChild(c); beads.push(c);
+    }
+    var cordPath = document.getElementById('pdCord'), cordHi = document.getElementById('pdCordHi');
+    var lampG = document.getElementById('pdLamp'), handleG = document.getElementById('pdHandle');
+    function f1(v) { return Math.round(v * 10) / 10; }
+    function render() {
+      var d = 'M' + f1(cord[0].x) + ' ' + f1(cord[0].y);
+      for (var k = 1; k < cord.length - 1; k++) {
+        var mx = (cord[k].x + cord[k + 1].x) / 2, my = (cord[k].y + cord[k + 1].y) / 2;
+        d += ' Q' + f1(cord[k].x) + ' ' + f1(cord[k].y) + ' ' + f1(mx) + ' ' + f1(my);
+      }
+      d += ' L' + f1(lamp.x) + ' ' + f1(lamp.y);
+      cordPath.setAttribute('d', d); cordHi.setAttribute('d', d);
+      lampG.setAttribute('transform', 'translate(' + f1(lamp.x) + ' ' + f1(lamp.y) + ') rotate(' + f1(ang * 180 / Math.PI) + ')');
+      for (k = 0; k < CH_N; k++) {
+        var a = chain[k], b = chain[k + 1];
+        beads[k * 2].setAttribute('cx', f1(a.x)); beads[k * 2].setAttribute('cy', f1(a.y));
+        beads[k * 2 + 1].setAttribute('cx', f1((a.x + b.x) / 2)); beads[k * 2 + 1].setAttribute('cy', f1((a.y + b.y) / 2));
+      }
+      var p = chain[CH_N - 1], ha = Math.atan2(-(handle.x - p.x), handle.y - p.y) * 180 / Math.PI;
+      handleG.setAttribute('transform', 'translate(' + f1(handle.x) + ' ' + f1(handle.y) + ') rotate(' + f1(ha) + ')');
+    }
+
+    var running = false, still = 0, last = 0, acc = 0;
+    function energy() { return Math.max(Math.abs(lamp.x - lamp.px) + Math.abs(lamp.y - lamp.py), Math.abs(handle.x - handle.px) + Math.abs(handle.y - handle.py)); }
+    function frame(t) {
+      if (!last) last = t;
+      acc += Math.min(50, t - last); last = t;
+      while (acc >= 16.67) { step(); acc -= 16.67; }
+      render();
+      if (!drag && energy() < 0.004) { if (++still > 60) { running = false; last = 0; return; } } else still = 0;
+      requestAnimationFrame(frame);
+    }
+    function wake() { if (!running) { running = true; still = 0; last = 0; acc = 0; requestAnimationFrame(frame); } }
+
+    for (i = 0; i < 260; i++) step();   // settle
+    render();
+    if (!reduce) { lamp.px -= 1.4; wake(); }
+
+    // ---------- interaction ----------
+    function toSvg(e) {
+      var r = svg.getBoundingClientRect();
+      return { x: (e.clientX - r.left) * 320 / r.width, y: (e.clientY - r.top) * 640 / r.height };
+    }
+    function used() { pendant.classList.add('pd-used'); }
+    function yank() { handle.py = handle.y - 15; lamp.px += (Math.random() < 0.5 ? -1 : 1) * 1.2; wake(); }
+    function begin(e, what) {
+      e.preventDefault();
+      drag = what; start = toSvg(e); target = start; moved = 0; armed = false;
+      (what === 'lamp' ? lamp : handle).im = 0;
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', end);
+      window.addEventListener('pointercancel', end);
+      used(); wake();
+    }
+    function move(e) { target = toSvg(e); moved = Math.max(moved, Math.hypot(target.x - start.x, target.y - start.y)); }
+    function end() {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', end);
+      window.removeEventListener('pointercancel', end);
+      var was = drag;
+      lamp.im = 0.08; handle.im = 0.5; drag = null;
+      if (was === 'handle') { if (armed) toggleMode(); else if (moved < 4) { yank(); toggleMode(); } }
+      else if (was === 'lamp' && moved < 4) { yank(); toggleMode(); }
+      armed = false; wake();
+    }
+    document.getElementById('pdBody').addEventListener('pointerdown', function (e) { begin(e, 'lamp'); });
+    handleG.addEventListener('pointerdown', function (e) { begin(e, 'handle'); });
+    handleG.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); used(); yank(); toggleMode(); }
+    });
+
+    // the cursor moving past the lamp pushes it a little, like air
+    var hero = document.getElementById('hero'), lastPt = null;
+    if (hero && !reduce) {
+      hero.addEventListener('pointermove', function (e) {
+        if (drag || e.pointerType === 'touch') return;
+        var p = toSvg(e);
+        if (lastPt) {
+          var vx = p.x - lastPt.x;
+          if (Math.hypot(p.x - lamp.x, p.y - (lamp.y + 40)) < 120) { wind += Math.max(-0.25, Math.min(0.25, vx * 0.012)); wake(); }
+        }
+        lastPt = p;
+      });
+      hero.addEventListener('pointerleave', function () { lastPt = null; });
+      setInterval(function () {
+        if (!drag && document.visibilityState === 'visible') { wind += (Math.random() - 0.5) * 0.12; wake(); }
+      }, 6500);
+    }
+
+    // kept for the page's other buttons that call it
+    window.pullSwitchAction = function () { used(); yank(); toggleMode(); };
+    window.handlePullKey = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.pullSwitchAction(); } };
+  })();
+
+  function setEnquiryType(type) {
+    const tabTender = document.getElementById('tab-tender');
+    const tabMaterial = document.getElementById('tab-material');
+    const categorySelect = document.getElementById('project-category-select');
+
+    if (type === 'tender') {
+      tabTender.className = 'flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-orange-600 text-white shadow-sm';
+      tabMaterial.className = 'flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-slate-600 hover:text-slate-900';
+      if (categorySelect) categorySelect.value = 'street-lighting';
+    } else {
+      tabMaterial.className = 'flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-cyan-600 text-white shadow-sm';
+      tabTender.className = 'flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-slate-600 hover:text-slate-900';
+      if (categorySelect) categorySelect.value = 'pole-procurement';
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    alert('Thank you! Your quotation request has been routed to our technical engineering desk in Cuttack. We will contact you within 24 hours.');
+  }
+</script>
+
+
+
+</body></html>
